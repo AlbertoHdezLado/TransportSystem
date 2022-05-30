@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <EditText
+        android:id="@+id/typeTransport"
+        android:layout_width="251dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="76dp"
+        android:text="@string/TypeTransport"
+        android:textAlignment="textStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        tools:ignore="Autofill,TextFields" />
+
+    <EditText
+        android:id="@+id/initialStation"
+        android:layout_width="251dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/InitialStation"
+        android:textAlignment="textStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/typeTransport"
+        tools:ignore="Autofill,TextFields" />
+
+    <EditText
+        android:id="@+id/endStation"
+        android:layout_width="251dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/FinalStation"
+        android:textAlignment="textStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/initialStation"
+        tools:ignore="Autofill,TextFields" />
+
+    <TextView
+        android:id="@+id/priceText"
+        android:layout_width="52dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/PriceText"
+        app:layout_constraintEnd_toStartOf="@+id/priceTextValue"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/endStation" />
+
+    <TextView
+        android:id="@+id/priceTextValue"
+        android:layout_width="68dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="136dp"
+        android:text="@string/PriceValue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/endStation" />
+
+    <TextView
+        android:id="@+id/timeText"
+        android:layout_width="52dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/TimeText"
+        app:layout_constraintBottom_toTopOf="@+id/payButton2"
+        app:layout_constraintEnd_toStartOf="@+id/timeTextValue"
+        app:layout_constraintHorizontal_bias="0.883"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/priceText"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/timeTextValue"
+        android:layout_width="68dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="136dp"
+        android:text="@string/TimeValue"
+        app:layout_constraintBottom_toTopOf="@+id/payButton2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/priceTextValue"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/payButton2"
+        android:layout_width="109dp"
+        android:layout_height="58dp"
+        android:layout_marginBottom="48dp"
+        android:text="@string/PayButton2"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="94dp"
+        android:layout_height="90dp"
+        android:contentDescription="@string/LogoMainScreen"
+        android:src="@drawable/logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ImageContrastCheck" />
+
+    <TextView
+        android:id="@+id/CurrentUserName"
+        android:layout_width="122dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/CurrentUserName"
+        android:textAlignment="textEnd"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/imageView3"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/CurrentMoney"
+        android:layout_width="131dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/CurrentMoney"
+        android:textAlignment="textEnd"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/imageView3"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CurrentUserName"
+        app:layout_constraintVertical_bias="0.015" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/cardview_dark_background"
+        app:itemTextColor="#ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_navigation_view">
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,62 @@
+<resources>
+    <string name="app_name">TransportSystem</string>
+    <string name="LogoMain">ApplicationLogoMainMenu</string>
+    <string name="Username">Username</string>
+    <string name="Password">Password</string>
+    <string name="LoginButton">Login</string>
+
+    <string name="RegisterButton">Register</string>
+    <string name="RegisterName">Name</string>
+    <string name="RegisterSurname">Surname</string>
+    <string name="RegisterDate">Date:</string>
+    <string name="RegisterEmail">email:</string>
+
+    <string name="PayButton">Pay ticket</string>
+    <string name="WalletButton">Wallet</string>
+    <string name="journeysButton">Recent Journeys</string>
+
+    <string name="CurrentUserName">UserName</string>
+    <string name="CurrentMoney">CurrentMoney</string>
+    <string name="LogoMainScreen">LogoMainScreen</string>
+    <string name="BottomNavigationProfile">Profile</string>
+    <string name="BottomNavigationSettings">Settings</string>
+    <string name="BottomNavigationHome">Home</string>
+
+    <string name="AddMoneyButton">Add money</string>
+    <string name="CheckTransactionsButton">Check transactions</string>
+
+    <string name="QuantityToAdd">Quantity to add:</string>
+    <string name="CardNumber">Card number:</string>
+    <string name="CardHolderName">Card holder name:</string>
+    <string name="DueDate">Due date:</string>
+    <string name="BackNumber">Back number:</string>
+    <string name="Pin">Pin:</string>
+
+    <string name="TypeTransport">Type of transport</string>
+    <string name="InitialStation">Initial station:</string>
+    <string name="FinalStation">Final station:</string>
+    <string name="PayButton2">Pay</string>
+    <string name="PriceText">Price:</string>
+    <string name="PriceValue">Number</string>
+    <string name="TimeText">Time:</string>
+    <string name="TimeValue">Number</string>
+
+    <string name="PriceText2">Price:</string>
+    <string name="PriceValue2">Number</string>
+    <string name="TimeText2">Time:</string>
+    <string name="TimeValue2">Number</string>
+    <string name="ValidityText">Validity:</string>
+    <string name="ValidityValue">Boolean</string>
+    <string name="DueDate2">Due date:</string>
+    <string name="DueDateValue">Date</string>
+    <string name="RouteText">Route</string>
+    <string name="RouteValue">All the stops</string>
+
+    <string name="RecentJourneys">Recent journeys</string>
+
+    <string name="RecentTransactions">Recent transactions</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+</resources>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/alber/Desktop/TransportSystem/app/src/main/res/drawable/logo.xml" value="0.14635416666666667" />
+        <entry key="..\:/Users/alber/Desktop/TransportSystem/app/src/main/res/layout/activity_main.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/alber/Desktop/TransportSystem/app/src/main/res/layout/add_money.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/alber/Desktop/TransportSystem/app/src/main/res/layout/fragment_login.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/alber/Desktop/TransportSystem/app/src/main/res/layout/fragment_register.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/alber/Desktop/TransportSystem/app/src/main/res/layout/journey_info.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/alber/Desktop/TransportSystem/app/src/main/res/layout/login.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/alber/Desktop/TransportSystem/app/src/main/res/layout/main_screen.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/alber/Desktop/TransportSystem/app/src/main/res/layout/pay_screen.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/alber/Desktop/TransportSystem/app/src/main/res/layout/profile.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/alber/Desktop/TransportSystem/app/src/main/res/layout/recent_journeys.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/alber/Desktop/TransportSystem/app/src/main/res/layout/recent_transactions.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/alber/Desktop/TransportSystem/app/src/main/res/layout/register.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/alber/Desktop/TransportSystem/app/src/main/res/layout/settings.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/alber/Desktop/TransportSystem/app/src/main/res/layout/wallet.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/alber/Desktop/TransportSystem/app/src/main/res/menu/bottom_navigation_view.xml" value="0.176" />
+        <entry key="..\:/Users/byalp/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/byalp/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/add_money.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/byalp/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/bottom_naviagtion_view.xml" value="0.1" />
+        <entry key="..\:/Users/byalp/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/journey_info.xml" value="0.29683698296836986" />
+        <entry key="..\:/Users/byalp/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/main_screen.xml" value="0.25317028985507245" />
+        <entry key="..\:/Users/byalp/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/pay_screen.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/byalp/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/profile.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/byalp/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/recent_journeys.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/byalp/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/recent_transactions.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/byalp/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/register.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/byalp/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/settings.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/byalp/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/wallet.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/byalp/AndroidStudioProjects/TransportSystem/app/src/main/res/menu/bottom_navigation_view.xml" value="0.25416666666666665" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.25416666666666665" />
+      </ProjectState>
+    </option>
+  </component>
+</project>

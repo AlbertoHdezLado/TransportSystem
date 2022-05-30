@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <ImageView
+        android:id="@+id/ImageQR"
+        android:layout_width="301dp"
+        android:layout_height="270dp"
+        android:layout_marginTop="36dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CurrentMoney" />
+
+    <TextView
+        android:id="@+id/priceText2"
+        android:layout_width="53dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="36dp"
+        android:text="@string/PriceText2"
+        app:layout_constraintEnd_toStartOf="@+id/priceTextValue2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ImageQR" />
+
+    <TextView
+        android:id="@+id/priceTextValue2"
+        android:layout_width="63dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="244dp"
+        android:text="@string/PriceValue2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ImageQR" />
+
+    <TextView
+        android:id="@+id/timeText2"
+        android:layout_width="53dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="36dp"
+        android:text="@string/TimeText2"
+        app:layout_constraintEnd_toStartOf="@+id/timeTextValue2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/priceText2" />
+
+    <TextView
+        android:id="@+id/timeTextValue2"
+        android:layout_width="63dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="244dp"
+        android:text="@string/TimeValue2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/priceTextValue2" />
+
+    <TextView
+        android:id="@+id/validityText"
+        android:layout_width="53dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="36dp"
+        android:text="@string/ValidityText"
+        app:layout_constraintEnd_toStartOf="@+id/validityValue"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/priceTextValue2"
+        app:layout_constraintTop_toBottomOf="@+id/ImageQR" />
+
+    <TextView
+        android:id="@+id/validityValue"
+        android:layout_width="63dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="60dp"
+        android:text="@string/ValidityValue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ImageQR" />
+
+    <TextView
+        android:id="@+id/dueDate2"
+        android:layout_width="65dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="36dp"
+        android:text="@string/DueDate2"
+        app:layout_constraintEnd_toStartOf="@+id/dueDateDate2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/timeTextValue2"
+        app:layout_constraintTop_toBottomOf="@id/validityText" />
+
+    <TextView
+        android:id="@+id/dueDateDate2"
+        android:layout_width="63dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="44dp"
+        android:text="@string/DueDateValue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/validityValue" />
+
+    <TextView
+        android:id="@+id/routeText"
+        android:layout_width="61dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="44dp"
+        android:text="@string/RouteText"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+        app:layout_constraintEnd_toStartOf="@+id/routeValue"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timeText2"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/routeValue"
+        android:layout_width="258dp"
+        android:layout_height="78dp"
+        android:layout_marginEnd="44dp"
+        android:text="@string/RouteValue"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dueDate2"
+        app:layout_constraintVertical_bias="0.323" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="94dp"
+        android:layout_height="90dp"
+        android:contentDescription="@string/LogoMainScreen"
+        android:src="@drawable/logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ImageContrastCheck" />
+
+    <TextView
+        android:id="@+id/CurrentUserName"
+        android:layout_width="122dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/CurrentUserName"
+        android:textAlignment="textEnd"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/imageView3"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/CurrentMoney"
+        android:layout_width="131dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/CurrentMoney"
+        android:textAlignment="textEnd"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/imageView3"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CurrentUserName"
+        app:layout_constraintVertical_bias="0.015" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/cardview_dark_background"
+        app:itemTextColor="#ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_navigation_view">
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
