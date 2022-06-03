@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "612709129591",
+    "project_id": "transportsystem-b236d",
+    "storage_bucket": "transportsystem-b236d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:612709129591:android:e4e38a415a6d98c0bed572",
+        "android_client_info": {
+          "package_name": "com.example.android.transportsystem"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "612709129591-ausq3ba5r4knf9fkvlijn1ja8u00l6ms.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANVEons8Vm1nromF_SzdYstk5YSAOcGoI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "612709129591-ausq3ba5r4knf9fkvlijn1ja8u00l6ms.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
