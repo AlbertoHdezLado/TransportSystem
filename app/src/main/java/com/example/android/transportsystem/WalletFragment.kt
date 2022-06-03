@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.navigation.fragment.findNavController
 
 class WalletFragment : Fragment() {
 
@@ -13,7 +15,22 @@ class WalletFragment : Fragment() {
         savedInstanceState: Bundle?,
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_wallet, container, false)
+        val v = inflater.inflate(R.layout.fragment_wallet, container, false)
+
+        val addMoneybutton = v.findViewById<Button>(R.id.wallet_addmoneybutton)
+        val checkTransactionsbutton = v.findViewById<Button>(R.id.wallet_checktransactionsbutton)
+
+        addMoneybutton.setOnClickListener {
+            val action = WalletFragmentDirections.actionWalletFragmentToAddMoneyFragment()
+            findNavController().navigate(action)
+        }
+
+        checkTransactionsbutton.setOnClickListener {
+            val action = WalletFragmentDirections.actionWalletFragmentToTransactionListFragment()
+            findNavController().navigate(action)
+        }
+
+        return v
     }
 
 }

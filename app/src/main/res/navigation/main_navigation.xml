@@ -1,11 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
     app:startDestination="@id/mainFragment">
 
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.example.android.transportsystem.MainFragment"
-        android:label="MainFragment" />
+        android:label="MainFragment" >
+        <action
+            android:id="@+id/action_mainFragment_to_payFragment"
+            app:destination="@id/payFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_mainFragment_to_walletFragment"
+            app:destination="@id/walletFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_mainFragment_to_journeyListFragment"
+            app:destination="@id/journeyListFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/payFragment"
+        android:name="com.example.android.transportsystem.PayFragment"
+        android:label="fragment_pay"
+        tools:layout="@layout/fragment_pay" />
+    <fragment
+        android:id="@+id/walletFragment"
+        android:name="com.example.android.transportsystem.WalletFragment"
+        android:label="WalletFragment" >
+        <action
+            android:id="@+id/action_walletFragment_to_transactionListFragment"
+            app:destination="@id/transactionListFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_walletFragment_to_addMoneyFragment"
+            app:destination="@id/addMoneyFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/journeyListFragment"
+        android:name="com.example.android.transportsystem.JourneyListFragment"
+        android:label="JourneyListFragment" />
+    <fragment
+        android:id="@+id/transactionListFragment"
+        android:name="com.example.android.transportsystem.TransactionListFragment"
+        android:label="TransactionListFragment" />
+    <fragment
+        android:id="@+id/addMoneyFragment"
+        android:name="com.example.android.transportsystem.AddMoneyFragment"
+        android:label="AddMoneyFragment" />
 </navigation>

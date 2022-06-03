@@ -9,13 +9,13 @@
         android:id="@+id/addQuantityNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="40dp"
         android:ems="10"
         android:inputType="number"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="Autofill,SpeakableTextPresentCheck" />
 
     <EditText
@@ -114,13 +114,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="30dp"
         android:text="@string/QuantityToAdd"
         android:textAlignment="center"
         app:layout_constraintEnd_toStartOf="@+id/addQuantityNumber"
         app:layout_constraintHorizontal_bias="0.361"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/cardNumber"
@@ -164,62 +164,11 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="52dp"
+        android:layout_marginTop="30dp"
         android:text="@string/AddMoneyButton"
         android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordNumber"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="94dp"
-        android:layout_height="90dp"
-        android:contentDescription="@string/LogoMainScreen"
-        android:src="@drawable/logo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="ImageContrastCheck" />
-
-    <TextView
-        android:id="@+id/CurrentUserName"
-        android:layout_width="122dp"
-        android:layout_height="31dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/CurrentUserName"
-        android:textAlignment="textEnd"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/imageView3"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/CurrentMoney"
-        android:layout_width="131dp"
-        android:layout_height="34dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/CurrentMoney"
-        android:textAlignment="textEnd"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/imageView3"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CurrentUserName"
-        app:layout_constraintVertical_bias="0.015" />
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/cardview_dark_background"
-        app:itemTextColor="#ffffff"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_navigation_view">
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
+        app:layout_constraintTop_toBottomOf="@+id/passwordNumber" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
