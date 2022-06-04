@@ -13,6 +13,10 @@ class JoruneyFragment : Fragment() {
         savedInstanceState: Bundle?,
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_joruney, container, false)
+        val v = inflater.inflate(R.layout.fragment_joruney, container, false)
+
+        //TODO
+
+        return v
     }
 }

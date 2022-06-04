@@ -13,7 +13,11 @@ class SettingFragment : Fragment() {
         savedInstanceState: Bundle?,
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_setting, container, false)
+        val v = inflater.inflate(R.layout.fragment_setting, container, false)
+
+        //TODO
+
+        return v
     }
 
 }

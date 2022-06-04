@@ -1,19 +1,20 @@
 <resources>
     <string name="app_name">TransportSystem</string>
     <string name="LogoMain">ApplicationLogoMainMenu</string>
-    <string name="Username">Username</string>
-    <string name="Password">Password</string>
+
+    <string name="Name">Name:</string>
+    <string name="Surname">Surname:</string>
+    <string name="Date">Birth date:</string>
+    <string name="Email">Email:</string>
+    <string name="Password">Password:</string>
+    <string name="ConfPassword">Confirm password:</string>
+
     <string name="LoginButton">Login</string>
-
     <string name="RegisterButton">Register</string>
-    <string name="RegisterName">Name</string>
-    <string name="RegisterSurname">Surname</string>
-    <string name="RegisterDate">Date:</string>
-    <string name="RegisterEmail">email:</string>
-
     <string name="PayButton">Pay ticket</string>
     <string name="WalletButton">Wallet</string>
     <string name="journeysButton">Recent Journeys</string>
+    <string name="SelectDateButton">Select</string>
 
     <string name="CurrentUserName">UserName</string>
     <string name="CurrentMoney">CurrentMoney</string>
