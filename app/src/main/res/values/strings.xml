@@ -16,8 +16,6 @@
     <string name="journeysButton">Recent Journeys</string>
     <string name="SelectDateButton">Select</string>
 
-    <string name="CurrentUserName">UserName</string>
-    <string name="CurrentMoney">CurrentMoney</string>
     <string name="LogoMainScreen">LogoMainScreen</string>
     <string name="BottomNavigationProfile">Profile</string>
     <string name="BottomNavigationSettings">Settings</string>
@@ -33,7 +31,7 @@
     <string name="BackNumber">Back number:</string>
     <string name="Pin">Pin:</string>
 
-    <string name="TypeTransport">Type of transport</string>
+    <string name="TypeTransport">Type of transport:</string>
     <string name="InitialStation">Initial station:</string>
     <string name="FinalStation">Final station:</string>
     <string name="PayButton2">Pay</string>
@@ -64,9 +62,6 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
-
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
 
 </resources>

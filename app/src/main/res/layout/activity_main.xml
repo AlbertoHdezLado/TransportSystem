@@ -8,27 +8,25 @@
     android:id="@+id/activity_main">
 
     <TextView
-        android:id="@+id/currentMoney"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="@string/CurrentMoney"
-        android:textAlignment="textEnd"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/currentUserName"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/currentUserName"
+        android:id="@+id/main_currentMoney"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="20dp"
-        android:text="@string/CurrentUserName"
         android:textAlignment="textEnd"
-        android:textSize="20sp"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/main_currentName"
+        app:layout_constraintTop_toBottomOf="@+id/main_currentName" />
+
+    <TextView
+        android:id="@+id/main_currentName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:textAlignment="textEnd"
+        android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/currentMoney" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView"
