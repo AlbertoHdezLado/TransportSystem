@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 
 class AddMoneyFragment : Fragment() {
 
@@ -16,6 +17,9 @@ class AddMoneyFragment : Fragment() {
         val v = inflater.inflate(R.layout.fragment_add_money, container, false)
 
         //TODO
+
+        //val action = AddMoneyFragmentDirections.actionAddMoneyFragmentToWalletFragment()
+        //findNavController().navigate(action)
 
         return v
     }

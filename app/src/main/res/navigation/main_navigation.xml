@@ -66,5 +66,9 @@
     <fragment
         android:id="@+id/addMoneyFragment"
         android:name="com.example.android.transportsystem.AddMoneyFragment"
-        android:label="AddMoneyFragment" />
+        android:label="AddMoneyFragment" >
+        <action
+            android:id="@+id/action_addMoneyFragment_to_walletFragment"
+            app:destination="@id/walletFragment" />
+    </fragment>
 </navigation>
