@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <EditText
-        android:id="@+id/addQuantityNumber"
+        android:id="@+id/addm_addQuantityNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
@@ -19,7 +19,7 @@
         tools:ignore="Autofill,SpeakableTextPresentCheck" />
 
     <EditText
-        android:id="@+id/backNumberNumber"
+        android:id="@+id/addm_backNumberNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
@@ -28,24 +28,24 @@
         android:inputType="number"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dueDateDate"
+        app:layout_constraintTop_toBottomOf="@+id/addm_dueDateDate"
         tools:ignore="Autofill,SpeakableTextPresentCheck" />
 
     <TextView
-        android:id="@+id/backNumber"
+        android:id="@+id/addm_backNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginTop="48dp"
         android:text="@string/BackNumber"
         android:textAlignment="center"
-        app:layout_constraintEnd_toStartOf="@+id/dueDateDate"
+        app:layout_constraintEnd_toStartOf="@+id/addm_dueDateDate"
         app:layout_constraintHorizontal_bias="0.406"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dueDate" />
+        app:layout_constraintTop_toBottomOf="@+id/addm_dueDate" />
 
     <EditText
-        android:id="@+id/dueDateDate"
+        android:id="@+id/addm_dueDateDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -54,24 +54,24 @@
         android:inputType="date"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardGolderNameName"
+        app:layout_constraintTop_toBottomOf="@+id/addm_cardGolderNameName"
         tools:ignore="Autofill,SpeakableTextPresentCheck" />
 
     <TextView
-        android:id="@+id/dueDate"
+        android:id="@+id/addm_dueDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginTop="52dp"
         android:text="@string/DueDate"
         android:textAlignment="center"
-        app:layout_constraintEnd_toStartOf="@+id/dueDateDate"
+        app:layout_constraintEnd_toStartOf="@+id/addm_dueDateDate"
         app:layout_constraintHorizontal_bias="0.22"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardHolderName" />
+        app:layout_constraintTop_toBottomOf="@+id/addm_cardHolderName" />
 
     <EditText
-        android:id="@+id/cardGolderNameName"
+        android:id="@+id/addm_cardGolderNameName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
@@ -80,24 +80,24 @@
         android:inputType="number"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardNumberNumber"
+        app:layout_constraintTop_toBottomOf="@+id/addm_cardNumberNumber"
         tools:ignore="Autofill,SpeakableTextPresentCheck" />
 
     <TextView
-        android:id="@+id/cardHolderName"
+        android:id="@+id/addm_cardHolderName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginTop="72dp"
         android:text="@string/CardHolderName"
         android:textAlignment="center"
-        app:layout_constraintEnd_toStartOf="@+id/cardGolderNameName"
+        app:layout_constraintEnd_toStartOf="@+id/addm_cardGolderNameName"
         app:layout_constraintHorizontal_bias="0.304"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardNumber" />
+        app:layout_constraintTop_toBottomOf="@+id/addm_cardNumber" />
 
     <EditText
-        android:id="@+id/cardNumberNumber"
+        android:id="@+id/addm_cardNumberNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
@@ -106,37 +106,37 @@
         android:inputType="number"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addQuantityNumber"
+        app:layout_constraintTop_toBottomOf="@+id/addm_addQuantityNumber"
         tools:ignore="Autofill,SpeakableTextPresentCheck" />
 
     <TextView
-        android:id="@+id/addQuantity"
+        android:id="@+id/addm_addQuantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginTop="30dp"
         android:text="@string/QuantityToAdd"
         android:textAlignment="center"
-        app:layout_constraintEnd_toStartOf="@+id/addQuantityNumber"
+        app:layout_constraintEnd_toStartOf="@+id/addm_addQuantityNumber"
         app:layout_constraintHorizontal_bias="0.361"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/cardNumber"
+        android:id="@+id/addm_cardNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginTop="56dp"
         android:text="@string/CardNumber"
         android:textAlignment="center"
-        app:layout_constraintEnd_toStartOf="@+id/cardNumberNumber"
+        app:layout_constraintEnd_toStartOf="@+id/addm_cardNumberNumber"
         app:layout_constraintHorizontal_bias="0.097"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addQuantity" />
+        app:layout_constraintTop_toBottomOf="@+id/addm_addQuantity" />
 
     <EditText
-        android:id="@+id/passwordNumber"
+        android:id="@+id/addm_passwordNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
@@ -145,23 +145,24 @@
         android:inputType="numberPassword"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/backNumberNumber"
+        app:layout_constraintTop_toBottomOf="@+id/addm_backNumberNumber"
         tools:ignore="Autofill,SpeakableTextPresentCheck" />
 
     <TextView
-        android:id="@+id/password"
+        android:id="@+id/addm_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginTop="64dp"
         android:text="@string/Pin"
         android:textAlignment="center"
-        app:layout_constraintEnd_toStartOf="@+id/passwordNumber"
+        app:layout_constraintEnd_toStartOf="@+id/addm_passwordNumber"
         app:layout_constraintHorizontal_bias="0.22"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/backNumber" />
+        app:layout_constraintTop_toBottomOf="@+id/addm_backNumber" />
 
     <Button
+        android:id="@+id/addm_addMoneyButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
@@ -169,6 +170,6 @@
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordNumber" />
+        app:layout_constraintTop_toBottomOf="@+id/addm_passwordNumber" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

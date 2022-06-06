@@ -7,119 +7,120 @@
 
 
     <ImageView
-        android:id="@+id/ImageQR"
+        android:id="@+id/jour_ImageQR"
         android:layout_width="301dp"
         android:layout_height="270dp"
         android:layout_marginTop="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/QR_Image" />
 
     <TextView
-        android:id="@+id/priceText2"
+        android:id="@+id/jour_priceText2"
         android:layout_width="53dp"
         android:layout_height="28dp"
         android:layout_marginStart="52dp"
         android:layout_marginTop="36dp"
         android:text="@string/PriceText2"
-        app:layout_constraintEnd_toStartOf="@+id/priceTextValue2"
+        app:layout_constraintEnd_toStartOf="@+id/jour_priceTextValue2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ImageQR" />
+        app:layout_constraintTop_toBottomOf="@+id/jour_ImageQR" />
 
     <TextView
-        android:id="@+id/priceTextValue2"
+        android:id="@+id/jour_priceTextValue2"
         android:layout_width="63dp"
         android:layout_height="35dp"
         android:layout_marginTop="36dp"
         android:layout_marginEnd="244dp"
         android:text="@string/PriceValue2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ImageQR" />
+        app:layout_constraintTop_toBottomOf="@+id/jour_ImageQR" />
 
     <TextView
-        android:id="@+id/timeText2"
+        android:id="@+id/jour_timeText2"
         android:layout_width="53dp"
         android:layout_height="28dp"
         android:layout_marginStart="52dp"
         android:layout_marginTop="36dp"
         android:text="@string/TimeText2"
-        app:layout_constraintEnd_toStartOf="@+id/timeTextValue2"
+        app:layout_constraintEnd_toStartOf="@+id/jour_timeTextValue2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/priceText2" />
+        app:layout_constraintTop_toBottomOf="@id/jour_priceText2" />
 
     <TextView
-        android:id="@+id/timeTextValue2"
+        android:id="@+id/jour_timeTextValue2"
         android:layout_width="63dp"
         android:layout_height="35dp"
         android:layout_marginTop="28dp"
         android:layout_marginEnd="244dp"
         android:text="@string/TimeValue2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/priceTextValue2" />
+        app:layout_constraintTop_toBottomOf="@id/jour_priceTextValue2" />
 
     <TextView
-        android:id="@+id/validityText"
+        android:id="@+id/jour_validityText"
         android:layout_width="53dp"
         android:layout_height="28dp"
         android:layout_marginStart="64dp"
         android:layout_marginTop="36dp"
         android:text="@string/ValidityText"
-        app:layout_constraintEnd_toStartOf="@+id/validityValue"
+        app:layout_constraintEnd_toStartOf="@+id/jour_validityValue"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/priceTextValue2"
-        app:layout_constraintTop_toBottomOf="@+id/ImageQR" />
+        app:layout_constraintStart_toEndOf="@+id/jour_priceTextValue2"
+        app:layout_constraintTop_toBottomOf="@+id/jour_ImageQR" />
 
     <TextView
-        android:id="@+id/validityValue"
+        android:id="@+id/jour_validityValue"
         android:layout_width="63dp"
         android:layout_height="35dp"
         android:layout_marginTop="36dp"
         android:layout_marginEnd="60dp"
         android:text="@string/ValidityValue"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ImageQR" />
+        app:layout_constraintTop_toBottomOf="@+id/jour_ImageQR" />
 
     <TextView
-        android:id="@+id/dueDate2"
+        android:id="@+id/jour_dueDate2"
         android:layout_width="65dp"
         android:layout_height="33dp"
         android:layout_marginStart="64dp"
         android:layout_marginTop="36dp"
         android:text="@string/DueDate2"
-        app:layout_constraintEnd_toStartOf="@+id/dueDateDate2"
+        app:layout_constraintEnd_toStartOf="@+id/jour_dueDateDate2"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/timeTextValue2"
-        app:layout_constraintTop_toBottomOf="@id/validityText" />
+        app:layout_constraintStart_toEndOf="@+id/jour_timeTextValue2"
+        app:layout_constraintTop_toBottomOf="@id/jour_validityText" />
 
     <TextView
-        android:id="@+id/dueDateDate2"
+        android:id="@+id/jour_dueDateDate2"
         android:layout_width="63dp"
         android:layout_height="35dp"
         android:layout_marginTop="28dp"
         android:layout_marginEnd="44dp"
         android:text="@string/DueDateValue"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/validityValue" />
+        app:layout_constraintTop_toBottomOf="@id/jour_validityValue" />
 
     <TextView
-        android:id="@+id/routeText"
+        android:id="@+id/jour_routeText"
         android:layout_width="61dp"
         android:layout_height="26dp"
         android:layout_marginStart="44dp"
         android:layout_marginTop="44dp"
         android:text="@string/RouteText"
-        app:layout_constraintEnd_toStartOf="@+id/routeValue"
+        app:layout_constraintEnd_toStartOf="@+id/jour_routeValue"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/timeText2" />
+        app:layout_constraintTop_toBottomOf="@+id/jour_timeText2" />
 
     <TextView
-        android:id="@+id/routeValue"
+        android:id="@+id/jour_routeValue"
         android:layout_width="258dp"
         android:layout_height="78dp"
         android:layout_marginEnd="44dp"
         android:text="@string/RouteValue"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dueDate2" />
+        app:layout_constraintTop_toBottomOf="@+id/jour_dueDate2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <TextView
-        android:id="@+id/recentJourneys"
+        android:id="@+id/jourList_recentJourneys"
         android:layout_width="match_parent"
         android:layout_height="36dp"
         android:layout_marginTop="30dp"
@@ -20,14 +20,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:id="@+id/LinearLayoutManagerJourneys"
+        android:id="@+id/jourList_LinearLayoutManagerJourneys"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recentJourneys" />
+        app:layout_constraintTop_toBottomOf="@+id/jourList_recentJourneys" />
     <!--https://developer.android.com/guide/topics/ui/layout/recyclerview?hl=es-419-->
 
 

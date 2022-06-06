@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:id="@+id/LinearLayoutManagerJourneys"
+        android:id="@+id/jourList_LinearLayoutManagerJourneys"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="horizontal"
