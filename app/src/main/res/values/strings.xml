@@ -64,5 +64,13 @@
     <string name="previous">Previous</string>
     <string name="QR_Image">TODO</string>
 
+    <string-array name="Languages">
+        <item>Java</item>
+        <item>Kotlin</item>
+        <item>Swift</item>
+        <item>Python</item>
+        <item>Scala</item>
+        <item>Perl</item>
+    </string-array>
 
 </resources>

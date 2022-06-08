@@ -27,7 +27,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/jourList_recentJourneys" />
+        app:layout_constraintTop_toBottomOf="@+id/jourList_recentJourneys" >
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
     <!--https://developer.android.com/guide/topics/ui/layout/recyclerview?hl=es-419-->
 
 

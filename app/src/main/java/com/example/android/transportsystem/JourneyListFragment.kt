@@ -15,7 +15,7 @@ class JourneyListFragment : Fragment() {
         // Inflate the layout for this fragment
         val v = inflater.inflate(R.layout.fragment_journey_list, container, false)
 
-        //TODO
+
 
         return v
     }

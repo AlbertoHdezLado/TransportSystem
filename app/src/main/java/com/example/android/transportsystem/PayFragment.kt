@@ -2,6 +2,7 @@ package com.example.android.transportsystem
 
 import android.os.Bundle
 import android.util.Log
+import android.util.PrintStreamPrinter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -34,49 +35,54 @@ class PayFragment : Fragment() {
             }
         }
 
-        val spinner = v.findViewById<Spinner>(R.id.pay_initialstation)
+        val initialStationSpinner = v.findViewById<Spinner>(R.id.pay_initialstation)
 
-        if (spinner != null) {
-            val adapter = ArrayAdapter(activity?.applicationContext!!,
-                android.R.layout.simple_spinner_item, stations)
-            spinner.adapter = adapter
-        }
+        if (initialStationSpinner != null) {
+            val adapter = ArrayAdapter(this.context!!,
+                R.layout.spinner_item, stations)
+            initialStationSpinner.adapter = adapter
 
-        /*spinner.onItemSelectedListener = object :
-            AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>,
-                                        view: View, position: Int, id: Long) {
-                initialStationText.text = stations[position]
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>) {
-                // write code to perform some action
-            }
-        }*/
-        return v
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val spinner = activity?.findViewById<Spinner>(R.id.pay_initialstation)
-        val stations: MutableList<String> = ArrayList()
-
-        val rootRef = FirebaseFirestore.getInstance()
-        val subjectsRef = rootRef.collection("stations")
-
-        subjectsRef.get().
-        addOnCompleteListener { documents ->
-            if (documents.isSuccessful) {
-                for (document in documents.result) {
-                    stations.add(document.id)
+            initialStationSpinner.onItemSelectedListener = object :
+                AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(parent: AdapterView<*>,
+                                            view: View, position: Int, id: Long) {
+                    Toast.makeText(v.context,
+                        getString(R.string.InitialStation) + " " +
+                                "" + stations[position], Toast.LENGTH_SHORT).show()
                 }
-            } else {
-                Log.d("ERROR", "Error reading firebase data", documents.exception)
+                override fun onNothingSelected(parent: AdapterView<*>) {
+                    // write code to perform some action
+                }
             }
         }
 
-        spinner?.adapter = ArrayAdapter(activity?.applicationContext!!, R.layout.support_simple_spinner_dropdown_item, stations)
 
-        super.onViewCreated(view, savedInstanceState)
+        // access the items of the list
+        val languages = resources.getStringArray(R.array.Languages)
+
+        // access the spinner
+        val spinner = v.findViewById<Spinner>(R.id.pay_pay_type)
+        if (spinner != null) {
+            val adapter = ArrayAdapter(this.context!!,
+                android.R.layout.simple_spinner_item, languages)
+            spinner.adapter = adapter
+
+            spinner.onItemSelectedListener = object :
+                AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(parent: AdapterView<*>,
+                                            view: View, position: Int, id: Long) {
+                    Toast.makeText(v.context,
+                        getString(R.string.TypeTransport) + " " +
+                                "" + languages[position], Toast.LENGTH_SHORT).show()
+                }
+                override fun onNothingSelected(parent: AdapterView<*>) {
+                    // write code to perform some action
+                }
+            }
+        }
+
+
+        return v
     }
 
 
