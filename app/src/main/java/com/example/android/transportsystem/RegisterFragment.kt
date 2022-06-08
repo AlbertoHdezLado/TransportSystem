@@ -104,7 +104,8 @@ class RegisterFragment : Fragment() {
                 val userBD = User(nameText, surnameText, dateText, emailText, passwordText)
                 val rootRef = FirebaseFirestore.getInstance()
                 val usersRef = rootRef.collection("users")
-                usersRef.document(emailText).set(userBD)
+                val uniqueID = usersRef.document().id
+                usersRef.document(uniqueID).set(userBD)
 
                 //Change fragment to login
                 val action = RegisterFragmentDirections.actionRegisterFragmentToLoginFragment()

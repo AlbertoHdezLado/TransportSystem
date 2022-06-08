@@ -29,18 +29,15 @@ class MainActivity : AppCompatActivity() {
         val email = auth.currentUser?.email
         val db = FirebaseFirestore.getInstance()
         val usersRef = db.collection("users")
-        usersRef.document(email!!).get().addOnCompleteListener { task ->
-            if (task.isSuccessful) {
-                val document = task.result
+        usersRef.whereEqualTo("email", email)
+            .get()
+            .addOnSuccessListener { documents ->
+            for (document in documents) {
                 if (document.exists()) {
                     name.text = "${document.getString("name").toString()} ${document.getString("surname").toString()}"
                     money.text = "${document.getDouble("money").toString()} pln"
                 } else {
                     Log.d(TAG, "The document doesn't exist.")
-                }
-            } else {
-                task.exception?.message?.let {
-                    Log.d(TAG, "Error in task")
                 }
             }
         }
