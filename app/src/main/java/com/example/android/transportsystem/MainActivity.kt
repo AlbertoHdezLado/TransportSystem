@@ -18,6 +18,7 @@ import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import com.example.android.transportsystem.databinding.ActivityMainBinding
@@ -66,28 +67,12 @@ class MainActivity : AppCompatActivity() {
         BottomNavigationView.OnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.menu_profile -> {
-                    val fragment = ProfileFragment()
-                    getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.main_navigation,fragment)
-                        .commit()
-                   // myTrans.replace(R.id.main_navigation, fragment)
+
                 }
                 R.id.menu_home -> {
-                    val fragment = MainFragment()
-                    getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.main_navigation,fragment)
-                        .commit()
-                    //myTrans.replace(R.id.main_navigation, fragment)
+
                 }
                 R.id.menu_settings -> {
-                    val fragment = SettingFragment()
-                    getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.main_navigation,fragment)
-                        .commit()
-                    //myTrans.replace(R.id.main_navigation, fragment)
                 }
             }
             //myTrans.commit()
