@@ -6,6 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
@@ -16,7 +19,6 @@ class MainActivity : AppCompatActivity() {
 
     private val db: FirebaseFirestore = FirebaseFirestore.getInstance()
     private val collectionReference : CollectionReference = db.collection("users")
-    //private var myTrans = supportFragmentManager.beginTransaction()
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,26 +43,13 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+        //Bottom navigation configuration
         val bottomNavigation: BottomNavigationView = findViewById(R.id.bottom_navigation)
-        bottomNavigation.setOnItemSelectedListener(navigationListener)
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.main_navigation) as NavHostFragment
+        val navController = navHostFragment.navController
+        bottomNavigation.setupWithNavController(navController)
     }
 
-    //Travel using the bottom Navigation
-    private val navigationListener =
-        BottomNavigationView.OnNavigationItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.menu_profile -> {
-
-                }
-                R.id.menu_home -> {
-
-                }
-                R.id.menu_settings -> {
-                }
-            }
-            //myTrans.commit()
-            false
-        }
 
     //To override onBackPressed on MainFragment
     override fun onBackPressed() {
