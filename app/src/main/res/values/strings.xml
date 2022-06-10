@@ -55,7 +55,8 @@
 
     <string name="RecentTransactions">Recent transactions</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragmentProfile">Profile</string>
+    <string name="hello_blank_fragmentSetting">Setting</string>
     <string name="title_activity_logged">LoggedActivity</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
