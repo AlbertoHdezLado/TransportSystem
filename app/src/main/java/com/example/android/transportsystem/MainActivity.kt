@@ -41,26 +41,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-        val bottomNavigation: BottomNavigationView = findViewById(R.id.bottom_navigation)
-        bottomNavigation.setOnItemSelectedListener(navigationListener)
     }
-
-    //Travel using the bottom Navigation
-    private val navigationListener =
-        BottomNavigationView.OnNavigationItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.menu_profile -> {
-
-                }
-                R.id.menu_home -> {
-
-                }
-                R.id.menu_settings -> {
-                }
-            }
-            //myTrans.commit()
-            false
-        }
 
     //To override onBackPressed on MainFragment
     override fun onBackPressed() {
