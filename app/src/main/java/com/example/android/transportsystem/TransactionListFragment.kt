@@ -45,7 +45,7 @@ class TransactionListFragment : Fragment() {
         val auth = FirebaseAuth.getInstance()
         val email = auth.currentUser?.email
 
-        db.collection("transactions").whereEqualTo("userEmail", email).addSnapshotListener(object: EventListener<QuerySnapshot>{
+        db.collection("transactions").whereEqualTo("userEmail", email).orderBy("date").addSnapshotListener(object: EventListener<QuerySnapshot>{
             @SuppressLint("NotifyDataSetChanged")
             override fun onEvent(value: QuerySnapshot?, error: FirebaseFirestoreException?) {
                 if (error != null){

@@ -22,7 +22,7 @@ class RegisterFragment : Fragment() {
 
     lateinit var name: EditText
     lateinit var surname: EditText
-    lateinit var date: TextView
+    lateinit var birthdate: TextView
     lateinit var email: EditText
     private lateinit var password: EditText
     private lateinit var confpassword: EditText
@@ -45,7 +45,7 @@ class RegisterFragment : Fragment() {
 
         name = v.findViewById(R.id.reg_name)
         surname = v.findViewById(R.id.reg_surname)
-        date = v.findViewById(R.id.reg_datetext)
+        birthdate = v.findViewById(R.id.reg_birthdatetext)
         email = v.findViewById(R.id.reg_email)
         password = v.findViewById(R.id.reg_password)
         confpassword = v.findViewById(R.id.reg_confpassword)
@@ -60,7 +60,7 @@ class RegisterFragment : Fragment() {
         selectDateButton.setOnClickListener {
             val dpd = DatePickerDialog(v.context, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
                 // Display Selected date in TextView
-                date.text = "$dayOfMonth/${monthOfYear+1}/$year"
+                birthdate.text = "$dayOfMonth/${monthOfYear+1}/$year"
             }, year, month, day)
             dpd.show()
         }
@@ -77,13 +77,13 @@ class RegisterFragment : Fragment() {
         //Variables
         val nameText = name.text.toString()
         val surnameText = surname.text.toString()
-        val dateText = date.text.toString()
+        val birthdateText = birthdate.text.toString()
         val emailText = email.text.toString()
         val passwordText = password.text.toString()
         val confpasswordText = confpassword.text.toString()
 
         // Check empty variables
-        if (emailText.isBlank() || passwordText.isBlank() || confpasswordText.isBlank() || nameText.isBlank() || dateText.isBlank()) {
+        if (emailText.isBlank() || passwordText.isBlank() || confpasswordText.isBlank() || nameText.isBlank() || birthdateText.isBlank()) {
             Toast.makeText(activity, "Data can't be blank", Toast.LENGTH_SHORT).show()
             return
         }
@@ -101,7 +101,7 @@ class RegisterFragment : Fragment() {
                 Toast.makeText(activity, "Successful registration!", Toast.LENGTH_SHORT).show()
 
                 //Save user data in firebase
-                val userBD = User(nameText, surnameText, dateText, emailText, passwordText)
+                val userBD = User(nameText, surnameText, birthdateText, emailText, passwordText)
                 val rootRef = FirebaseFirestore.getInstance()
                 val usersRef = rootRef.collection("users")
                 usersRef.document(emailText).set(userBD)

@@ -60,27 +60,6 @@ class PayFragment : Fragment() {
         // access the items of the list
         val languages = resources.getStringArray(R.array.Languages)
 
-        // access the spinner
-        val spinner = v.findViewById<Spinner>(R.id.pay_pay_type)
-        if (spinner != null) {
-            val adapter = ArrayAdapter(this.context!!,
-                android.R.layout.simple_spinner_item, languages)
-            spinner.adapter = adapter
-
-            spinner.onItemSelectedListener = object :
-                AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(parent: AdapterView<*>,
-                                            view: View, position: Int, id: Long) {
-                    Toast.makeText(v.context,
-                        getString(R.string.TypeTransport) + " " +
-                                "" + languages[position], Toast.LENGTH_SHORT).show()
-                }
-                override fun onNothingSelected(parent: AdapterView<*>) {
-                    // write code to perform some action
-                }
-            }
-        }
-
 
         return v
     }

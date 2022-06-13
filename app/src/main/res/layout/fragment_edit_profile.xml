@@ -26,56 +26,14 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView8"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="Name:" />
-
-            <TextView
-                android:id="@+id/prof_name"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:ems="10"
-                android:minHeight="48dp" />
-
-            <TextView
-                android:id="@+id/textView6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="Surname:" />
-
-            <TextView
-                android:id="@+id/prof_surname"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:ems="10"
-                android:minHeight="48dp" />
-
-            <TextView
-                android:id="@+id/textView10"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="Birth date: " />
-
-            <TextView
-                android:id="@+id/prof_birthdate"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:ems="10"
-                android:minHeight="48dp" />
-
-            <TextView
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:text="Email: " />
 
-            <TextView
-                android:id="@+id/prof_email"
+            <EditText
+                android:id="@+id/editprof_email"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:ems="10"
@@ -88,15 +46,31 @@
                 android:layout_marginTop="5dp"
                 android:text="Password: " />
 
-            <TextView
-                android:id="@+id/prof_password"
+            <EditText
+                android:id="@+id/editprof_password"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:ems="10"
+                android:inputType="textWebPassword"
+                android:minHeight="48dp" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Confirm password: " />
+
+            <EditText
+                android:id="@+id/editprof_confpassword"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:ems="10"
+                android:inputType="textWebPassword"
                 android:minHeight="48dp" />
 
             <Button
-                android:id="@+id/prof_editprofilebutton"
+                android:id="@+id/editprof_modifybutton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Edit profile" />
@@ -108,15 +82,17 @@
     </ScrollView>
 
     <Button
-        android:id="@+id/prof_logoutbutton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginEnd="40dp"
-        android:text="Logout"
-        app:layout_constraintBottom_toBottomOf="@+id/scrollView2"
+        android:id="@+id/prof_modify_button"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:text="Modify profile"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2"
+        app:layout_constraintVertical_bias="0.43" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

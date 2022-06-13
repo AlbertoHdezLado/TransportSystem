@@ -76,10 +76,23 @@
         android:id="@+id/profileFragment"
         android:name="com.example.android.transportsystem.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_editProfile"
+            app:destination="@id/editProfile" />
+    </fragment>
     <fragment
         android:id="@+id/settingFragment"
         android:name="com.example.android.transportsystem.SettingFragment"
         android:label="fragment_setting"
         tools:layout="@layout/fragment_setting" />
+    <fragment
+        android:id="@+id/editProfile"
+        android:name="com.example.android.transportsystem.EditProfileFragment"
+        android:label="fragment_edit_profile"
+        tools:layout="@layout/fragment_edit_profile" >
+        <action
+            android:id="@+id/action_editProfile_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
 </navigation>
