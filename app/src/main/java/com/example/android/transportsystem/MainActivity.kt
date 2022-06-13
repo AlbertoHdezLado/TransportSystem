@@ -38,29 +38,24 @@ class MainActivity : AppCompatActivity() {
         usersRef.whereEqualTo("email", email)
             .get()
             .addOnSuccessListener { documents ->
-            for (document in documents) {
-                if (document.exists()) {
-                    name.text = "${document.getString("name").toString()} ${document.getString("surname").toString()}"
-                    money.text = "${document.getDouble("money").toString()} pln"
-                } else {
-                    Log.d(TAG, "The document doesn't exist.")
+                for (document in documents) {
+                    if (document.exists()) {
+                        name.text = "${
+                            document.getString("name").toString()
+                        } ${document.getString("surname").toString()}"
+                        money.text = "${document.getDouble("money").toString()} pln"
+                    } else {
+                        Log.d(TAG, "The document doesn't exist.")
+                    }
                 }
             }
-        }
         //Bottom navigation configuration
         val bottomNavigation: BottomNavigationView = findViewById(R.id.bottom_navigation)
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.main_navigation) as NavHostFragment
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.main_navigation) as NavHostFragment
         val navController = navHostFragment.navController
-        bottomNavigation.selectedItemId(R.)
-
-        bottomNavigation.setOnItemReselectedListener  {
-            when (it.itemId) {
-                R.id.mainFragment -> {
-                    while (navController.currentDestination?.id != R.id.mainFragment)
-                        navController.navigateUp()
-                }
-            }
-        }
+        NavigationUI.setupWithNavController(bottomNavigation, navController)
+        NavigationUI.setupActionBarWithNavController(this, navController)
     }
 
 
