@@ -1,25 +1,17 @@
 package com.example.android.transportsystem
 
 import android.annotation.SuppressLint
-import android.app.ActivityManager
 import android.content.ContentValues.TAG
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.MenuItem
 import android.widget.TextView
-import android.widget.Toast
-import androidx.fragment.app.FragmentTransaction
-import androidx.fragment.app.commit
-import androidx.navigation.findNavController
+import androidx.appcompat.app.ActionBar
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.navigation.NavigationBarItemView
-import com.google.android.material.navigation.NavigationBarMenuView
-import com.google.android.material.navigation.NavigationBarView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
@@ -32,6 +24,8 @@ class MainActivity : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val actionBar: ActionBar? = supportActionBar
+        actionBar!!.hide()
         setContentView(R.layout.activity_main)
 
         val name = findViewById<TextView>(R.id.main_currentName)
@@ -57,8 +51,16 @@ class MainActivity : AppCompatActivity() {
         val bottomNavigation: BottomNavigationView = findViewById(R.id.bottom_navigation)
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.main_navigation) as NavHostFragment
         val navController = navHostFragment.navController
-        bottomNavigation.setupWithNavController(navController)
+        bottomNavigation.selectedItemId(R.)
 
+        bottomNavigation.setOnItemReselectedListener  {
+            when (it.itemId) {
+                R.id.mainFragment -> {
+                    while (navController.currentDestination?.id != R.id.mainFragment)
+                        navController.navigateUp()
+                }
+            }
+        }
     }
 
 

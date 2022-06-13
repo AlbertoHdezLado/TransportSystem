@@ -25,10 +25,11 @@ class JourneyAdapter (private val journeyList : ArrayList<Journey>) : RecyclerVi
         println(journey)
         holder.date.text = journey.date
         holder.id.text = journey.id
-        holder.stations.text = journey.initialStation + " -> " + journey.finalStation
+        holder.initialStation.text = journey.initialStation
+        holder.finalStation.text = journey.finalStation
         holder.time.text = journey.time.toString()
         holder.money.text = journey.money.toString()
-        holder.vehicles.text = journey.vehicles
+        holder.vehicles.text = journey.vehicles?.joinToString(", ")
     }
 
     override fun getItemCount(): Int {
@@ -38,7 +39,8 @@ class JourneyAdapter (private val journeyList : ArrayList<Journey>) : RecyclerVi
     public class JourneyHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val date = itemView.findViewById<TextView>(R.id.journeycard_date)
         val id = itemView.findViewById<TextView>(R.id.journeycard_id)
-        val stations = itemView.findViewById<TextView>(R.id.journeycard_stations)
+        val initialStation = itemView.findViewById<TextView>(R.id.journeycard_initialstations)
+        val finalStation = itemView.findViewById<TextView>(R.id.journeycard_finalstations)
         val time = itemView.findViewById<TextView>(R.id.journeycard_time)
         val money = itemView.findViewById<TextView>(R.id.journeycard_money)
         val vehicles = itemView.findViewById<TextView>(R.id.journeycard_vehicles)

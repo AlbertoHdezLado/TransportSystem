@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.*
 
 class JourneyListFragment : Fragment() {
@@ -42,7 +43,10 @@ class JourneyListFragment : Fragment() {
 
     private fun EventChangeListener() {
         db = FirebaseFirestore.getInstance()
-        db.collection("journeys").addSnapshotListener(object : EventListener<QuerySnapshot> {
+        val auth = FirebaseAuth.getInstance()
+        val email = auth.currentUser?.email
+
+        db.collection("journeys").whereEqualTo("userEmail", email).addSnapshotListener(object : EventListener<QuerySnapshot> {
             @SuppressLint("NotifyDataSetChanged")
             override fun onEvent(value: QuerySnapshot?, error: FirebaseFirestoreException?) {
                 if (error != null) {
