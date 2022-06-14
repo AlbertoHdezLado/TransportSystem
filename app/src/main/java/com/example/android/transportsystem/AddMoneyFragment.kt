@@ -18,8 +18,8 @@ class AddMoneyFragment : Fragment() {
 
         //TODO
 
-        //val action = AddMoneyFragmentDirections.actionAddMoneyFragmentToWalletFragment()
-        //findNavController().navigate(action)
+        val action = AddMoneyFragmentDirections.actionAddMoneyFragmentToWalletFragment()
+        findNavController().navigate(action)
 
         return v
     }
