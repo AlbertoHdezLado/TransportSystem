@@ -8,21 +8,18 @@
         <entry key="..\:/Users/alber/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/add_money.xml" value="0.17300724637681159" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/fragment_add_money.xml" value="0.17300724637681159" />
-        <entry key="..\:/Users/alber/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/fragment_edit_profile.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/fragment_history.xml" value="0.17300724637681159" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/fragment_joruney.xml" value="0.17300724637681159" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/fragment_journey.xml" value="0.264" />
-        <entry key="..\:/Users/alber/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/fragment_journey_list.xml" value="0.2" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/fragment_journey_list.xml" value="0.1598731884057971" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/fragment_login.xml" value="0.4" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/fragment_main.xml" value="0.17300724637681159" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/fragment_pay.xml" value="0.4" />
-        <entry key="..\:/Users/alber/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/fragment_profile.xml" value="0.264" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/fragment_profile.xml" value="0.1598731884057971" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/fragment_register.xml" value="0.4" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/fragment_setting.xml" value="0.1598731884057971" />
-        <entry key="..\:/Users/alber/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/fragment_transaction.xml" value="0.12291666666666666" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/fragment_transaction_list.xml" value="0.17300724637681159" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/fragment_wallet.xml" value="0.17300724637681159" />
-        <entry key="..\:/Users/alber/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/journey_card.xml" value="0.5070993914807302" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/journey_info.xml" value="0.17300724637681159" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/main_screen.xml" value="0.17300724637681159" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/pay_screen.xml" value="0.264" />
@@ -30,10 +27,7 @@
         <entry key="..\:/Users/alber/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/recent_journeys.xml" value="0.17300724637681159" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/recent_transactions.xml" value="0.17300724637681159" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/settings.xml" value="0.17300724637681159" />
-        <entry key="..\:/Users/alber/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/spinner_item.xml" value="0.13020833333333334" />
-        <entry key="..\:/Users/alber/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/transaction_card.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/wallet.xml" value="0.17300724637681159" />
-        <entry key="..\:/Users/alber/AndroidStudioProjects/TransportSystem/app/src/main/res/menu/bottom_navigation_view.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/alber/Desktop/TransportSystem/app/src/main/res/drawable/logo.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/alber/Desktop/TransportSystem/app/src/main/res/layout/activity_main.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/alber/Desktop/TransportSystem/app/src/main/res/layout/add_money.xml" value="0.13020833333333334" />
@@ -67,6 +61,7 @@
         <entry key="..\:/Users/byalp/AndroidStudioProjects/TransportSystemGitHub/app/src/main/res/layout/activity_main.xml" value="0.1793478260869565" />
         <entry key="..\:/Users/byalp/AndroidStudioProjects/TransportSystemGitHub/app/src/main/res/layout/fragment_add_money.xml" value="0.22010869565217392" />
         <entry key="..\:/Users/byalp/AndroidStudioProjects/TransportSystemGitHub/app/src/main/res/layout/fragment_bottom_navigation.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/byalp/AndroidStudioProjects/TransportSystemGitHub/app/src/main/res/layout/fragment_edit_profile.xml" value="0.1" />
         <entry key="..\:/Users/byalp/AndroidStudioProjects/TransportSystemGitHub/app/src/main/res/layout/fragment_joruney.xml" value="0.22010869565217392" />
         <entry key="..\:/Users/byalp/AndroidStudioProjects/TransportSystemGitHub/app/src/main/res/layout/fragment_journey_list.xml" value="0.22010869565217392" />
         <entry key="..\:/Users/byalp/AndroidStudioProjects/TransportSystemGitHub/app/src/main/res/layout/fragment_login.xml" value="0.22010869565217392" />

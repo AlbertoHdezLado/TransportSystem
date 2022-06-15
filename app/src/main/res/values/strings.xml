@@ -41,7 +41,7 @@
     <string name="TimeValue">Number</string>
     <string name="BookTicket">Book Ticket</string>
     <string name="CalculateRoute">Calculate Route</string>
-    <string name="Routes">Routes:</string>
+    <string name="Routes">Route:</string>
 
     <string name="PriceText2">Price:</string>
     <string name="PriceValue2">Number</string>
@@ -52,6 +52,7 @@
     <string name="DueDate2">Due date:</string>
     <string name="DueDateValue">Date</string>
     <string name="RouteText">Route</string>
+    <string name="StopsText">Stops:</string>
     <string name="RouteValue">All the stops</string>
 
     <string name="RecentJourneys">Recent journeys</string>
