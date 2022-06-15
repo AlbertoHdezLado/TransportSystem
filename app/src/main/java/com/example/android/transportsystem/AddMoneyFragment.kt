@@ -8,6 +8,9 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 
 class AddMoneyFragment : Fragment() {
+    private val db: FirebaseFirestore = FirebaseFirestore.getInstance()
+    private val collectionReference : CollectionReference = db.collection("users")
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -15,12 +18,13 @@ class AddMoneyFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val v = inflater.inflate(R.layout.fragment_add_money, container, false)
-
-        //TODO
-
-        val action = AddMoneyFragmentDirections.actionAddMoneyFragmentToWalletFragment()
-        findNavController().navigate(action)
-
+        lateinit var userId: String
+        var money by Delegates.notNull<Int>()
+        val addMoneyButton = v.findViewById<Button>(R.id.addm_addMoneyButton)
+        addMoneyButton.setOnClickListener {
+            val action = MainFragmentDirections.actionMainFragmentToPayFragment()
+            findNavController().navigate(action)
+        }
         return v
     }
 }
