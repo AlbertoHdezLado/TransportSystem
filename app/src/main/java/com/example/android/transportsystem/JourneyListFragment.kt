@@ -41,7 +41,7 @@ class JourneyListFragment : Fragment() {
                     putString("date" ,journeyArrayList[position].date)
                     putString("id" ,journeyArrayList[position].id)
                     putString("initialStation" ,journeyArrayList[position].initialStation)
-                    putString("initialStation" ,journeyArrayList[position].finalStation)
+                    putString("finalStation" ,journeyArrayList[position].finalStation)
                     putLong("time" ,journeyArrayList[position].time!!)
                     putLong("money" ,journeyArrayList[position].money!!)
                     putStringArrayList("vehicles" , journeyArrayList[position].vehicles as ArrayList<String>)
