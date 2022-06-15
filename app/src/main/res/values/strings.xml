@@ -39,6 +39,9 @@
     <string name="PriceValue">Number</string>
     <string name="TimeText">Time:</string>
     <string name="TimeValue">Number</string>
+    <string name="BookTicket">Book Ticket</string>
+    <string name="CalculateRoute">Calculate Route</string>
+    <string name="Routes">Routes:</string>
 
     <string name="PriceText2">Price:</string>
     <string name="PriceValue2">Number</string>
@@ -64,16 +67,5 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
     <string name="QR_Image">TODO</string>
-
-    <string-array name="Languages">
-        <item>Java</item>
-        <item>Kotlin</item>
-        <item>Swift</item>
-        <item>Python</item>
-        <item>Scala</item>
-        <item>Perl</item>
-    </string-array>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
