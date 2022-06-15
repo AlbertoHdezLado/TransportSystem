@@ -59,7 +59,11 @@ class ProfileFragment : Fragment() {
                     profSurname.text = surname
                     profBirthdate.text = birthdate
                     profEmail.text = email
-                    profPassword.text = pass
+                    var asterisk = ""
+                    (0..pass.length).forEach { _ ->
+                        asterisk = asterisk + "*"
+                    }
+                    profPassword.text = asterisk
                     profPassword.inputType = InputType.TYPE_TEXT_VARIATION_PASSWORD;
                 }
             }

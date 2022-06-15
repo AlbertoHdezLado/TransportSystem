@@ -1,6 +1,7 @@
 package com.example.android.transportsystem
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.text.InputType
 import androidx.fragment.app.Fragment
@@ -21,8 +22,8 @@ import androidx.annotation.NonNull
 import com.google.android.gms.tasks.OnCompleteListener
 
 import com.google.firebase.auth.FirebaseUser
-
-
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 
 class EditProfileFragment : Fragment() {
@@ -48,7 +49,6 @@ class EditProfileFragment : Fragment() {
         val email = auth.currentUser?.email
         collectionReference.whereEqualTo("email", email).get().addOnCompleteListener { documents ->
             if (documents.isSuccessful) {
-                println(email)
                 for (document in documents.result) {
                     userId = document.id
                     pass = document.getString("pass").toString()
@@ -61,26 +61,52 @@ class EditProfileFragment : Fragment() {
 
         val editButton = v.findViewById<Button>(R.id.editprof_modifybutton)
         editButton.setOnClickListener {
-            var newEmail = editprofEmail.text.toString()
+            val newEmail = editprofEmail.text.toString()
             if (email != newEmail) {
-                auth.currentUser!!.updateEmail(editprofEmail.text.toString()).addOnCompleteListener { task ->
-                        if (task.isSuccessful) {
-                            Toast.makeText(activity, "Data has been updated", Toast.LENGTH_SHORT).show()
-                        }
-                    }
+                auth.currentUser!!.updateEmail(editprofEmail.text.toString())
                 db.collection("users").document(userId).update("email", newEmail)
 
                 db.collection("journeys").whereEqualTo("userEmail", email).get().addOnCompleteListener { documents ->
                     if (documents.isSuccessful) {
                         for (document in documents.result) {
-                            if (document.getString("email").toString() == email)
-                                db.collection("journeys").document(document.id).update("userEmail", newEmail)
+                            db.collection("journeys").document(document.id).update("userEmail", newEmail)
                         }
                     }
                 }
 
-                val action = EditProfileFragmentDirections.actionEditProfileToProfileFragment()
-                findNavController().navigate(action)
+                db.collection("transactions").whereEqualTo("userEmail", email).get().addOnCompleteListener { documents ->
+                    if (documents.isSuccessful) {
+                        for (document in documents.result) {
+                            db.collection("transactions").document(document.id).update("userEmail", newEmail)
+                        }
+                    }
+                }
+                Toast.makeText(activity, "Email modified successfully!", Toast.LENGTH_SHORT).show()
+            }
+            val newPass = editprofPassword.text.toString()
+            val newConfPass = editconfProfPassword.text.toString()
+            if (pass != newPass) {
+                if (newPass == newConfPass) {
+                    auth.currentUser!!.updatePassword(editprofPassword.text.toString())
+                        .addOnCompleteListener { task ->
+                            if (task.isSuccessful) {
+                                Toast.makeText(activity,
+                                    "Data has been updated",
+                                    Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                    db.collection("users").document(userId).update("pass", newPass)
+                    Toast.makeText(activity, "Passwords modified successfully!", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(activity, "Passwords are not the same!", Toast.LENGTH_SHORT).show()
+                }
+            }
+            if (email == newEmail && pass == newPass)
+                Toast.makeText(activity, "Nothing have been changed", Toast.LENGTH_SHORT).show()
+            else {
+                Firebase.auth.signOut()
+                val intent = Intent(activity, InitActivity::class.java)
+                startActivity(intent)
             }
         }
 
