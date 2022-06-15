@@ -21,16 +21,10 @@ class MainFragment : Fragment() {
         val v =  inflater.inflate(R.layout.fragment_main, container, false)
 
         val payButton = v.findViewById<Button>(R.id.main_paybutton)
-        val walletButton = v.findViewById<Button>(R.id.main_walletbutton)
         val journeysButton = v.findViewById<Button>(R.id.main_journeysbutton)
 
         payButton.setOnClickListener {
             val action = MainFragmentDirections.actionMainFragmentToPayFragment()
-            findNavController().navigate(action)
-        }
-
-        walletButton.setOnClickListener {
-            val action = MainFragmentDirections.actionMainFragmentToWalletFragment()
             findNavController().navigate(action)
         }
 

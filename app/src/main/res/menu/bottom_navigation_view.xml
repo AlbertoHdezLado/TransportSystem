@@ -9,7 +9,7 @@
         android:icon="@drawable/home"
         android:title="@string/BottomNavigationHome" />
     <item
-        android:id="@+id/settingFragment"
-        android:icon="@android:drawable/ic_menu_manage"
-        android:title="@string/BottomNavigationSettings"/>
+        android:id="@+id/walletFragment"
+        android:icon="@drawable/icons8_wallet_24"
+        android:title="Wallet"/>
 </menu>
