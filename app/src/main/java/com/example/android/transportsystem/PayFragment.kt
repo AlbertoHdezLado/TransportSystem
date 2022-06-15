@@ -1,5 +1,6 @@
 package com.example.android.transportsystem
 
+import android.app.ProgressDialog
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -10,6 +11,26 @@ import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
+import java.io.FileOutputStream
+import androidmads.library.qrgenearator.QRGEncoder
+
+import android.graphics.Bitmap
+import com.google.zxing.WriterException
+
+import android.R.dimen
+import android.net.Uri
+
+import androidmads.library.qrgenearator.QRGContents
+import com.google.firebase.storage.UploadTask
+
+import com.google.android.gms.tasks.OnSuccessListener
+
+import androidx.annotation.NonNull
+
+import com.google.android.gms.tasks.OnFailureListener
+import java.io.ByteArrayOutputStream
 
 
 class PayFragment : Fragment() {
@@ -73,8 +94,10 @@ class PayFragment : Fragment() {
 
             initialStation.onItemSelectedListener = object :
                 AdapterView.OnItemSelectedListener{
-                override fun onItemSelected(parent: AdapterView<*>,
-                                            view: View, position: Int, id: Long) {
+                override fun onItemSelected(
+                    parent: AdapterView<*>,
+                    view: View, position: Int, id: Long,
+                ) {
                     if(stations[position] != "") {
                         Toast.makeText(
                             activity,
@@ -101,7 +124,8 @@ class PayFragment : Fragment() {
             finalStation.onItemSelectedListener = object :
                 AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(
-                    parent: AdapterView<*>, view: View, position: Int, id: Long) {
+                    parent: AdapterView<*>, view: View, position: Int, id: Long,
+                ) {
                     if(stations[position] != "") {
                         Toast.makeText(
                             activity,
@@ -234,6 +258,31 @@ class PayFragment : Fragment() {
             return 2
         } else{
             return 3
+        }
+    }
+
+    fun generateQr(id: String){
+        val qrgEncoder = QRGEncoder(id, null, QRGContents.Type.TEXT, 25)
+        val bitmap = qrgEncoder.encodeAsBitmap()
+
+        val storage = FirebaseStorage.getInstance()
+
+        // Create a storage reference from our app
+        val storageRef = storage.getReferenceFromUrl("gs://transportsystem-b236d.appspot.com")
+
+        // Create a reference to "mountains.jpg"
+        val mountainsRef = storageRef.child("$id.jpg")
+
+        val baos = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
+        val data = baos.toByteArray()
+
+        var uploadTask = mountainsRef.putBytes(data)
+        uploadTask.addOnFailureListener {
+            // Handle unsuccessful uploads
+        }.addOnSuccessListener { taskSnapshot ->
+            // taskSnapshot.metadata contains file metadata such as size, content-type, etc.
+            // ...
         }
     }
 

@@ -17,13 +17,6 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
         <action
-            android:id="@+id/action_mainFragment_to_walletFragment"
-            app:destination="@id/walletFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
-        <action
             android:id="@+id/action_mainFragment_to_journeyListFragment"
             app:destination="@id/journeyListFragment"
             app:enterAnim="@anim/slide_in_right"
@@ -70,11 +63,7 @@
     <fragment
         android:id="@+id/addMoneyFragment"
         android:name="com.example.android.transportsystem.AddMoneyFragment"
-        android:label="AddMoneyFragment" >
-        <action
-            android:id="@+id/action_addMoneyFragment_to_walletFragment"
-            app:destination="@id/walletFragment" />
-    </fragment>
+        android:label="AddMoneyFragment" />
 
     <fragment
         android:id="@+id/profileFragment"
@@ -85,11 +74,6 @@
             android:id="@+id/action_profileFragment_to_editProfile"
             app:destination="@id/editProfile" />
     </fragment>
-    <fragment
-        android:id="@+id/settingFragment"
-        android:name="com.example.android.transportsystem.SettingFragment"
-        android:label="fragment_setting"
-        tools:layout="@layout/fragment_setting" />
     <fragment
         android:id="@+id/editProfile"
         android:name="com.example.android.transportsystem.EditProfileFragment"

@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 
 class AddMoneyFragment : Fragment() {
-    private val db: FirebaseFirestore = FirebaseFirestore.getInstance()
+    /*private val db: FirebaseFirestore = FirebaseFirestore.getInstance()
     private val collectionReference : CollectionReference = db.collection("users")
 
 
@@ -26,5 +26,5 @@ class AddMoneyFragment : Fragment() {
             findNavController().navigate(action)
         }
         return v
-    }
+    }*/
 }
