@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
@@ -33,6 +34,20 @@ class JourneyListFragment : Fragment() {
         journeyArrayList = arrayListOf()
 
         myAdapter = JourneyAdapter(journeyArrayList)
+
+        myAdapter.setOnClickListener(object : JourneyAdapter.onItemClickListener{
+            override fun onItemClick(position: Int) {
+                findNavController().navigate(R.id.action_journeyListFragment_to_joruneyFragment, Bundle().apply {
+                    putString("date" ,journeyArrayList[position].date)
+                    putString("id" ,journeyArrayList[position].id)
+                    putString("initialStation" ,journeyArrayList[position].initialStation)
+                    putString("initialStation" ,journeyArrayList[position].finalStation)
+                    putLong("time" ,journeyArrayList[position].time!!)
+                    putLong("money" ,journeyArrayList[position].money!!)
+                    putStringArrayList("vehicles" , journeyArrayList[position].vehicles as ArrayList<String>)
+                })
+            }
+        })
 
         recyclerView.adapter = myAdapter
 

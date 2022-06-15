@@ -10,13 +10,24 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 class JourneyAdapter (private val journeyList : ArrayList<Journey>) : RecyclerView.Adapter<JourneyAdapter.JourneyHolder>() {
+
+    private lateinit var mListener: onItemClickListener
+
+    interface onItemClickListener{
+        fun onItemClick(position: Int)
+    }
+
+    fun setOnClickListener(listener: onItemClickListener) {
+        mListener = listener
+    }
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int,
     ): JourneyAdapter.JourneyHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.journey_card, parent, false)
 
-        return JourneyHolder(itemView)
+        return JourneyHolder(itemView, mListener)
     }
 
     @SuppressLint("SetTextI18n")
@@ -36,7 +47,7 @@ class JourneyAdapter (private val journeyList : ArrayList<Journey>) : RecyclerVi
         return journeyList.size
     }
 
-    public class JourneyHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    public class JourneyHolder(itemView: View, listener: onItemClickListener) : RecyclerView.ViewHolder(itemView) {
         val date = itemView.findViewById<TextView>(R.id.journeycard_date)
         val id = itemView.findViewById<TextView>(R.id.journeycard_id)
         val initialStation = itemView.findViewById<TextView>(R.id.journeycard_initialstations)
@@ -44,5 +55,11 @@ class JourneyAdapter (private val journeyList : ArrayList<Journey>) : RecyclerVi
         val time = itemView.findViewById<TextView>(R.id.journeycard_time)
         val money = itemView.findViewById<TextView>(R.id.journeycard_money)
         val vehicles = itemView.findViewById<TextView>(R.id.journeycard_vehicles)
+
+        init {
+            itemView.setOnClickListener {
+                listener.onItemClick(adapterPosition )
+            }
+        }
     }
 }

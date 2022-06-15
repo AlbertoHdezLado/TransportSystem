@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class TransactionAdapter (private val transactionList : ArrayList<Transaction>) : RecyclerView.Adapter<TransactionAdapter.TransactionHolder>() {
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int,
