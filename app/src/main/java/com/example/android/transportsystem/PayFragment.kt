@@ -120,12 +120,12 @@ class PayFragment : Fragment() {
 
         //Calcules the best route
         val buttonCalculate = v.findViewById<Button>(R.id.pay_calculateRoute)
-        var timeText = v.findViewById<TextView>(R.id.pay_time)
-        var priceText = v.findViewById<TextView>(R.id.pay_price)
-        var routeText = v.findViewById<TextView>(R.id.pay_routes)
+        val timeText = v.findViewById<TextView>(R.id.pay_time)
+        val priceText = v.findViewById<TextView>(R.id.pay_price)
+        val routeText = v.findViewById<TextView>(R.id.pay_routes)
         val minPrice = 0.1
         buttonCalculate.setOnClickListener {
-            if (stations[posIni] != "" && stations[posEnd] != "" && posIni != posEnd && routeText.text.isEmpty()) {
+            if (stations[posIni] != "" && stations[posEnd] != "" && posIni != posEnd) {
                 val shortestRoute: MutableList<String> = mutableListOf()
                 var opposite = false
                 if(posIni > posEnd){
