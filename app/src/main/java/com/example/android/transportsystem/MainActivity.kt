@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
                         name.text = "${
                             document.getString("name").toString()
                         } ${document.getString("surname").toString()}"
-                        money.text = "${document.getDouble("money").toString()} pln"
+                        money.text = "${("%.2f").format(document.getDouble("money"))} pln"
                     } else {
                         Log.d(TAG, "The document doesn't exist.")
                     }
@@ -67,6 +67,27 @@ class MainActivity : AppCompatActivity() {
             moveTaskToBack(true)
         else
             super.onBackPressed()
+    }
+
+    //Update current user's money
+    public fun updateUserMoney(){
+        val money = findViewById<TextView>(R.id.main_currentMoney)
+
+        val auth = FirebaseAuth.getInstance()
+        val email = auth.currentUser?.email
+        val db = FirebaseFirestore.getInstance()
+        val usersRef = db.collection("users")
+        usersRef.whereEqualTo("email", email)
+            .get()
+            .addOnSuccessListener { documents ->
+                for (document in documents) {
+                    if (document.exists()) {
+                        money.text = "${("%.2f").format(document.getDouble("money"))} pln"
+                    } else {
+                        Log.d(TAG, "The document doesn't exist.")
+                    }
+                }
+            }
     }
 
 }

@@ -1,6 +1,8 @@
 package com.example.android.transportsystem
 
 import android.annotation.SuppressLint
+import android.app.ActivityManager
+import android.content.ContentValues
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -10,11 +12,11 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentId
-import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.android.awaitFrame
 import java.time.LocalDate
 import java.time.LocalTime
 
@@ -81,10 +83,8 @@ class PayFragment : Fragment() {
 
             initialStation.onItemSelectedListener = object :
                 AdapterView.OnItemSelectedListener{
-                override fun onItemSelected(
-                    parent: AdapterView<*>,
-                    view: View, position: Int, id: Long,
-                ) {
+                override fun onItemSelected(parent: AdapterView<*>,
+                                            view: View, position: Int, id: Long) {
                     if(stations[position] != "") {
                         posIni = position
                     }
@@ -107,8 +107,7 @@ class PayFragment : Fragment() {
             finalStation.onItemSelectedListener = object :
                 AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(
-                    parent: AdapterView<*>, view: View, position: Int, id: Long,
-                ) {
+                    parent: AdapterView<*>, view: View, position: Int, id: Long) {
                     if(stations[position] != "") {
                         posEnd = position
                     }
@@ -126,19 +125,15 @@ class PayFragment : Fragment() {
         val timeText = v.findViewById<TextView>(R.id.pay_time)
         val priceText = v.findViewById<TextView>(R.id.pay_price)
         val routeText = v.findViewById<TextView>(R.id.pay_routes)
-        var minPrice = 0.1
+        val minPrice = 0.1
         val shortestRoute: MutableList<String> = mutableListOf()
         val shortestStops: MutableList<String> = mutableListOf()
         var time = 0
         buttonCalculate.setOnClickListener {
-            timeText.text = ""
-            priceText.text = ""
-            routeText.text = ""
-            minPrice = 0.1
-            time = 0
             if (stations[posIni] != "" && stations[posEnd] != "" && posIni != posEnd) {
                 shortestRoute.clear()
                 shortestStops.clear()
+                time = 0
                 var opposite = false
                 if(posIni > posEnd){
                     opposite = true
@@ -206,6 +201,7 @@ class PayFragment : Fragment() {
                     posIni = posEnd
                     posEnd = temporal
                 }
+                println(shortestRoute)
                 shortestRoute.forEachIndexed { i, vehicle ->
                     if (i == 0)
                         routeText.text = "${vehicle}: ${shortestStops[i]} --> ${shortestStops[i+1]} \n"
@@ -231,19 +227,17 @@ class PayFragment : Fragment() {
                 val stationIni = stations[posIni]
                 val stationEnd = stations[posEnd]
                 val money = time * minPrice
-                val hour = ((timeIni.minute + time) / 60)
-                val min = (timeIni.minute + time) % 60
+                var hour = ((timeIni.minute + time) / 60)
+                var min = (timeIni.minute + time) % 60
                 val timeEnd = (timeIni.hour + hour).toString() + ":" + min.toString() + ":" + timeIni.second.toString()
                 val email = FirebaseAuth.getInstance().currentUser?.email
 
                 //Create the document to add
-                val db = FirebaseFirestore.getInstance()
-                val UniqueID = db.collection("journeys").document().id
                 val journey: MutableMap<String, Any> = mutableMapOf()
                 journey["date"] = date.toString()
                 journey["initialStation"] = stationIni
                 journey["finalStation"] = stationEnd
-                journey["id"] = UniqueID
+                journey["id"] = ""
                 journey["money"] = money
                 journey["time"] = time
                 journey["timeStart"] = (timeIni.hour).toString() + ":" + (timeIni.minute).toString() + ":" + (timeIni.second).toString()
@@ -253,6 +247,7 @@ class PayFragment : Fragment() {
                 journey["stops"] = shortestStops
 
                 //add the document
+                val db = FirebaseFirestore.getInstance()
                 db.collection("journeys")
                     .add(journey)
                     .addOnSuccessListener {
@@ -266,7 +261,26 @@ class PayFragment : Fragment() {
                             "Ticket paid successfully, with:\n Start station: " + stations[posIni]
                                     + "\n End station: " + stations[posEnd], Toast.LENGTH_SHORT
                         ).show()
-                        findNavController().popBackStack()
+                        //Changes money value
+                        val email = FirebaseAuth.getInstance().currentUser?.email
+                        val usersRef = db.collection("users")
+                        usersRef.whereEqualTo("email", email)
+                            .get()
+                            .addOnSuccessListener { documents ->
+                                for (document in documents) {
+                                    if (document.exists()) {
+                                        db.collection("users")
+                                            .document(document.id)
+                                            .update(mapOf(
+                                                "money" to (document.getDouble("money")
+                                                !!.minus(money))
+                                            ))
+                                        (activity as MainActivity).updateUserMoney()
+                                    } else {
+                                        Log.d(ContentValues.TAG, "The document doesn't exist.")
+                                    }
+                                }
+                            }
                     }
                     .addOnFailureListener {
                         Toast.makeText(
