@@ -25,6 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:text="@string/FinalStation"
+        android:textColor="@color/primary"
         app:layout_constraintStart_toStartOf="@+id/pay_finalstation"
         app:layout_constraintTop_toBottomOf="@+id/pay_initialstation" />
 
@@ -47,6 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="@string/InitialStation"
+        android:textColor="@color/primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/pay_initialstation"
@@ -58,6 +60,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/TimeText"
+        android:textColor="@color/primary"
         app:layout_constraintStart_toStartOf="@+id/pay_textView12"
         app:layout_constraintTop_toBottomOf="@+id/pay_textView12" />
 
@@ -67,6 +70,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/PriceText"
+        android:textColor="@color/primary"
         app:layout_constraintStart_toStartOf="@+id/pay_finalstation"
         app:layout_constraintTop_toBottomOf="@+id/pay_finalstation" />
 
@@ -76,27 +80,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/Routes"
+        android:textColor="@color/primary"
         app:layout_constraintStart_toStartOf="@+id/pay_finalstation"
         app:layout_constraintTop_toBottomOf="@+id/pay_textView13" />
-
-    <TextView
-        android:id="@+id/pay_textView15"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="@string/StopsText"
-        app:layout_constraintStart_toStartOf="@+id/pay_finalstation"
-        app:layout_constraintTop_toBottomOf="@+id/pay_textView14" />
-
-    <TextView
-        android:id="@+id/pay_stops"
-        android:layout_width="230dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:gravity="left"
-        android:inputType="textMultiLine|textNoSuggestions"
-        app:layout_constraintStart_toEndOf="@+id/pay_textView15"
-        app:layout_constraintTop_toBottomOf="@+id/pay_textView15" />
 
     <TextView
         android:id="@+id/pay_time"
@@ -110,10 +96,10 @@
         android:id="@+id/pay_routes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
+        android:layout_marginTop="10dp"
         android:gravity="left"
         android:inputType="textMultiLine|textNoSuggestions"
-        app:layout_constraintStart_toEndOf="@+id/pay_textView14"
+        app:layout_constraintStart_toStartOf="@+id/pay_textView14"
         app:layout_constraintTop_toBottomOf="@+id/pay_textView14" />
 
     <TextView

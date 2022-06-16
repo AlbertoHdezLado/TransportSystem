@@ -1,5 +1,6 @@
 package com.example.android.transportsystem
 
+import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -21,6 +22,7 @@ class PayFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
+    @SuppressLint("SetTextI18n")
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -119,7 +121,6 @@ class PayFragment : Fragment() {
         val timeText = v.findViewById<TextView>(R.id.pay_time)
         val priceText = v.findViewById<TextView>(R.id.pay_price)
         val routeText = v.findViewById<TextView>(R.id.pay_routes)
-        val stopsText = v.findViewById<TextView>(R.id.pay_stops)
         val minPrice = 0.1
         val shortestRoute: MutableList<String> = mutableListOf()
         val shortestStops: MutableList<String> = mutableListOf()
@@ -195,7 +196,16 @@ class PayFragment : Fragment() {
                     posIni = posEnd
                     posEnd = temporal
                 }
-                if(shortestRoute.size > 3){
+                println(shortestRoute)
+                shortestRoute.forEachIndexed { i, vehicle ->
+                    if (i == 0)
+                        routeText.text = "${vehicle}: ${shortestStops[i]} --> ${shortestStops[i+1]} \n"
+                    else
+                        routeText.text = routeText.text.toString() + "${vehicle}: ${shortestStops[i]} --> ${shortestStops[i+1]} \n"
+                }
+
+
+                /*if(shortestRoute.size > 3){
                     routeText.text = "${shortestRoute.subList(0, 3)} \n ${shortestRoute.subList(3, shortestRoute.size)}"
                 } else {
                     routeText.text = "$shortestRoute"
@@ -208,7 +218,7 @@ class PayFragment : Fragment() {
                     stopsText.text = "${shortestStops.subList(0, 2)} \n ${shortestStops.subList(2, 4)} \n ${shortestStops.subList(4, 6)} \n ${shortestStops.subList(6, shortestStops.size)}"
                 } else {
                     stopsText.text = "$shortestStops"
-                }
+                }*/
             } else {
                 Toast.makeText(
                     activity,
