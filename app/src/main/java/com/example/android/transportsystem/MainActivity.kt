@@ -8,7 +8,9 @@ import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.app.ActionBar
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
@@ -38,8 +40,10 @@ class MainActivity : AppCompatActivity() {
             .addOnSuccessListener { documents ->
                 for (document in documents) {
                     if (document.exists()) {
-                        name.text = "${document.getString("name").toString()} ${document.getString("surname").toString()}"
-                        money.text = "${document.getDouble("money").toString()} pln"
+                        name.text = "${
+                            document.getString("name").toString()
+                        } ${document.getString("surname").toString()}"
+                        money.text = "${("%.2f").format(document.getDouble("money"))} pln"
                     } else {
                         Log.d(TAG, "The document doesn't exist.")
                     }
@@ -63,6 +67,27 @@ class MainActivity : AppCompatActivity() {
             moveTaskToBack(true)
         else
             super.onBackPressed()
+    }
+
+    //Update current user's money
+    public fun updateUserMoney(){
+        val money = findViewById<TextView>(R.id.main_currentMoney)
+
+        val auth = FirebaseAuth.getInstance()
+        val email = auth.currentUser?.email
+        val db = FirebaseFirestore.getInstance()
+        val usersRef = db.collection("users")
+        usersRef.whereEqualTo("email", email)
+            .get()
+            .addOnSuccessListener { documents ->
+                for (document in documents) {
+                    if (document.exists()) {
+                        money.text = "${("%.2f").format(document.getDouble("money"))} pln"
+                    } else {
+                        Log.d(TAG, "The document doesn't exist.")
+                    }
+                }
+            }
     }
 
 }

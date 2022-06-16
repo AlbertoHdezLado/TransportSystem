@@ -54,7 +54,7 @@
         android:inputType="date"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addm_cardGolderNameName"
+        app:layout_constraintTop_toBottomOf="@+id/addm_cardHolderNameName"
         tools:ignore="Autofill,SpeakableTextPresentCheck" />
 
     <TextView
@@ -71,13 +71,12 @@
         app:layout_constraintTop_toBottomOf="@+id/addm_cardHolderName" />
 
     <EditText
-        android:id="@+id/addm_cardGolderNameName"
+        android:id="@+id/addm_cardHolderNameName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
         android:layout_marginEnd="36dp"
         android:ems="10"
-        android:inputType="number"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addm_cardNumberNumber"
@@ -91,7 +90,7 @@
         android:layout_marginTop="72dp"
         android:text="@string/CardHolderName"
         android:textAlignment="center"
-        app:layout_constraintEnd_toStartOf="@+id/addm_cardGolderNameName"
+        app:layout_constraintEnd_toStartOf="@+id/addm_cardHolderNameName"
         app:layout_constraintHorizontal_bias="0.304"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addm_cardNumber" />
