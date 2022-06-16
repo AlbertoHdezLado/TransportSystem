@@ -36,8 +36,11 @@
 
             <TextView
                 android:id="@+id/journeychecked_id"
+                android:layout_width="match_parent" />
+
+            <Space
                 android:layout_width="match_parent"
-                android:layout_height="40dp" />
+                android:layout_height="20dp" />
 
             <TextView
                 android:id="@+id/textView13"
@@ -49,8 +52,11 @@
 
             <TextView
                 android:id="@+id/journeychecked_useremail"
+                android:layout_width="match_parent" />
+
+            <Space
                 android:layout_width="match_parent"
-                android:layout_height="40dp" />
+                android:layout_height="20dp" />
 
             <TextView
                 android:id="@+id/textView8"
@@ -63,8 +69,11 @@
 
             <TextView
                 android:id="@+id/journeychecked_date"
+                android:layout_width="match_parent" />
+
+            <Space
                 android:layout_width="match_parent"
-                android:layout_height="40dp" />
+                android:layout_height="20dp" />
 
             <TextView
                 android:id="@+id/textView3"
@@ -77,8 +86,13 @@
 
             <TextView
                 android:id="@+id/journeychecked_money"
+                android:layout_width="match_parent" />
+
+            <Space
                 android:layout_width="match_parent"
-                android:layout_height="40dp" />
+                android:layout_height="20dp"
+                tools:layout_editor_absoluteX="-165dp"
+                tools:layout_editor_absoluteY="365dp" />
 
             <TextView
                 android:id="@+id/textView16"
@@ -92,7 +106,7 @@
             <TextView
                 android:id="@+id/journeychecked_route"
                 android:layout_width="match_parent"
-                android:layout_height="40dp" />
+                android:layout_height="wrap_content" />
 
 
         </LinearLayout>

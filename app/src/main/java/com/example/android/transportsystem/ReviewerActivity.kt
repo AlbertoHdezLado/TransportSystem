@@ -73,5 +73,9 @@ class ReviewerActivity : AppCompatActivity() {
         super.onPause()
     }
 
+    override fun onBackPressed() {
+        super.onDestroy()
+    }
+
 
 }
