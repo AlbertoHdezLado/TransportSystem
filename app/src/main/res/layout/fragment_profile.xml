@@ -30,7 +30,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="Name:" />
+                android:text="Name:"
+                android:textColor="@color/primary"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/prof_name"
@@ -44,7 +46,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="Surname:" />
+                android:text="Surname:"
+                android:textColor="@color/primary"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/prof_surname"
@@ -58,7 +62,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="Birth date: " />
+                android:text="Birth date: "
+                android:textColor="@color/primary"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/prof_birthdate"
@@ -72,7 +78,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="Email: " />
+                android:text="Email: "
+                android:textColor="@color/primary"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/prof_email"
@@ -86,7 +94,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="Password: " />
+                android:text="Password: "
+                android:textColor="@color/primary"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/prof_password"
