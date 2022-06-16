@@ -6,5 +6,6 @@ data class User(
     var birthdate: String ?= null,
     var email: String ?= null,
     var pass:String ?= null,
-    var money: Int = 0) {
+    var money: Int = 0,
+    var type: Int = 0) {
 }

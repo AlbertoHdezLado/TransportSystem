@@ -10,7 +10,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidmads.library.qrgenearator.QRGContents
 import androidmads.library.qrgenearator.QRGEncoder
-import java.util.*
 
 class JourneyFragment : Fragment() {
 
@@ -26,7 +25,7 @@ class JourneyFragment : Fragment() {
         val dateText = v.findViewById<TextView>(R.id.journey_date)
         val idText = v.findViewById<TextView>(R.id.journey_id)
         val moneyText = v.findViewById<TextView>(R.id.journey_money)
-        val vehiclesText = v.findViewById<TextView>(R.id.journey_route)
+        val routeText = v.findViewById<TextView>(R.id.journey_route)
 
         dateText.text = "${requireArguments().getString("date")}\n${requireArguments().getString("timeStart")} - ${requireArguments().getString("timeEnd")}"
         idText.text = requireArguments().getString("id")
@@ -37,9 +36,9 @@ class JourneyFragment : Fragment() {
 
         vehicles?.forEachIndexed { i, vehicle ->
             if (i == 0)
-                vehiclesText.text = "${vehicle}: ${stops?.get(i)} --> ${stops?.get(i+1)} \n"
+                routeText.text = "${vehicle}: ${stops?.get(i)} --> ${stops?.get(i+1)} \n"
             else
-                vehiclesText.text = vehiclesText.text.toString() + "${vehicle}: ${stops?.get(i)} --> ${stops?.get(i+1)} \n"
+                routeText.text = routeText.text.toString() + "${vehicle}: ${stops?.get(i)} --> ${stops?.get(i+1)} \n"
         }
 
         val qrgEncoder = QRGEncoder(requireArguments().getString("id"), null, QRGContents.Type.TEXT, 750)

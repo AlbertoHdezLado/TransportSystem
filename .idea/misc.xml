@@ -4,8 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/alber/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/activity_init.xml" value="0.17300724637681159" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/activity_journey_checked.xml" value="0.4" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/activity_logged.xml" value="0.17300724637681159" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/activity_reviewer.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/add_money.xml" value="0.17300724637681159" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/fragment_add_money.xml" value="0.17300724637681159" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/fragment_edit_profile.xml" value="0.25416666666666665" />
@@ -18,6 +20,7 @@
         <entry key="..\:/Users/alber/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/fragment_pay.xml" value="0.264" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/fragment_profile.xml" value="0.264" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/fragment_register.xml" value="0.4" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/fragment_reviewer.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/fragment_setting.xml" value="0.1598731884057971" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/fragment_transaction.xml" value="0.12291666666666666" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/fragment_transaction_list.xml" value="0.17300724637681159" />
