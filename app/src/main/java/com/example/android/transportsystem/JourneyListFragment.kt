@@ -39,12 +39,15 @@ class JourneyListFragment : Fragment() {
             override fun onItemClick(position: Int) {
                 findNavController().navigate(R.id.action_journeyListFragment_to_joruneyFragment, Bundle().apply {
                     putString("date" ,journeyArrayList[position].date)
+                    putString("timeStart" ,journeyArrayList[position].timeStart)
+                    putString("timeEnd" ,journeyArrayList[position].timeEnd)
                     putString("id" ,journeyArrayList[position].id)
                     putString("initialStation" ,journeyArrayList[position].initialStation)
                     putString("finalStation" ,journeyArrayList[position].finalStation)
                     putLong("time" ,journeyArrayList[position].time!!)
                     putLong("money" ,journeyArrayList[position].money!!)
                     putStringArrayList("vehicles" , journeyArrayList[position].vehicles as ArrayList<String>)
+                    putStringArrayList("stops" , journeyArrayList[position].stops as ArrayList<String>)
                 })
             }
         })
@@ -61,7 +64,7 @@ class JourneyListFragment : Fragment() {
         val auth = FirebaseAuth.getInstance()
         val email = auth.currentUser?.email
 
-        db.collection("journeys").whereEqualTo("userEmail", email).addSnapshotListener(object : EventListener<QuerySnapshot> {
+        db.collection("journeys").whereEqualTo("userEmail", email).orderBy("date").orderBy("timeStart").addSnapshotListener(object : EventListener<QuerySnapshot> {
             @SuppressLint("NotifyDataSetChanged")
             override fun onEvent(value: QuerySnapshot?, error: FirebaseFirestoreException?) {
                 if (error != null) {

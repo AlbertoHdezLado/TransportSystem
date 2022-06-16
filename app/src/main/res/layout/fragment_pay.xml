@@ -6,11 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".PayFragment"
     android:id="@+id/fragment_pay">
+
     <Spinner
         android:id="@+id/pay_finalstation"
-        android:layout_width="200dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="40dp"
         android:minHeight="48dp"
         android:spinnerMode="dialog"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,17 +26,20 @@
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="10dp"
         android:text="@string/FinalStation"
         android:textColor="@color/primary"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/pay_finalstation"
         app:layout_constraintTop_toBottomOf="@+id/pay_initialstation" />
 
     <Spinner
         android:id="@+id/pay_initialstation"
-        android:layout_width="200dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="40dp"
         android:minHeight="48dp"
         android:spinnerMode="dialog"
         app:layout_constraintEnd_toEndOf="parent"
@@ -49,6 +55,7 @@
         android:layout_marginTop="20dp"
         android:text="@string/InitialStation"
         android:textColor="@color/primary"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/pay_initialstation"
@@ -58,9 +65,10 @@
         android:id="@+id/pay_textView13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="10dp"
         android:text="@string/TimeText"
         android:textColor="@color/primary"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/pay_textView12"
         app:layout_constraintTop_toBottomOf="@+id/pay_textView12" />
 
@@ -68,9 +76,10 @@
         android:id="@+id/pay_textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="10dp"
         android:text="@string/PriceText"
         android:textColor="@color/primary"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/pay_finalstation"
         app:layout_constraintTop_toBottomOf="@+id/pay_finalstation" />
 
@@ -78,9 +87,10 @@
         android:id="@+id/pay_textView14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="10dp"
         android:text="@string/Routes"
         android:textColor="@color/primary"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/pay_finalstation"
         app:layout_constraintTop_toBottomOf="@+id/pay_textView13" />
 
@@ -89,6 +99,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:textColor="#000000"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/pay_textView13"
         app:layout_constraintStart_toEndOf="@+id/pay_textView13" />
 
@@ -99,6 +111,8 @@
         android:layout_marginTop="10dp"
         android:gravity="left"
         android:inputType="textMultiLine|textNoSuggestions"
+        android:textColor="#000000"
+        android:textSize="14sp"
         app:layout_constraintStart_toStartOf="@+id/pay_textView14"
         app:layout_constraintTop_toBottomOf="@+id/pay_textView14" />
 
@@ -107,6 +121,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
+        android:textColor="#000000"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/pay_textView12"
         app:layout_constraintStart_toEndOf="@+id/pay_textView12" />
 
@@ -115,7 +131,7 @@
         android:id="@+id/pay_payButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="68dp"
+        android:layout_marginBottom="30dp"
         android:text="@string/PayButton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -126,12 +142,11 @@
         android:id="@+id/pay_calculateRoute"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
         android:text="@string/CalculateRoute"
         app:layout_constraintBottom_toTopOf="@+id/pay_payButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pay_textView14"
-        app:layout_constraintVertical_bias="0.891" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

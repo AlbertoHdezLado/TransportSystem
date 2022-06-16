@@ -34,13 +34,9 @@ class JourneyAdapter (private val journeyList : ArrayList<Journey>) : RecyclerVi
     override fun onBindViewHolder(holder: JourneyAdapter.JourneyHolder, position: Int) {
         val journey: Journey = journeyList[position]
         println(journey)
-        holder.date.text = journey.date
-        holder.id.text = journey.id
-        holder.initialStation.text = journey.initialStation
-        holder.finalStation.text = journey.finalStation
-        holder.time.text = journey.time.toString()
-        holder.money.text = journey.money.toString()
-        holder.vehicles.text = journey.vehicles?.joinToString(", ")
+        holder.date.text = "${journey.date}                 ${journey.timeStart.toString()} - ${journey.timeEnd.toString()}"
+        holder.initialStation.text = "From: ${journey.initialStation}"
+        holder.finalStation.text = "To: ${journey.finalStation}"
     }
 
     override fun getItemCount(): Int {
@@ -49,12 +45,8 @@ class JourneyAdapter (private val journeyList : ArrayList<Journey>) : RecyclerVi
 
     public class JourneyHolder(itemView: View, listener: onItemClickListener) : RecyclerView.ViewHolder(itemView) {
         val date = itemView.findViewById<TextView>(R.id.journeycard_date)
-        val id = itemView.findViewById<TextView>(R.id.journeycard_id)
-        val initialStation = itemView.findViewById<TextView>(R.id.journeycard_initialstations)
-        val finalStation = itemView.findViewById<TextView>(R.id.journeycard_finalstations)
-        val time = itemView.findViewById<TextView>(R.id.journeycard_time)
-        val money = itemView.findViewById<TextView>(R.id.journeycard_money)
-        val vehicles = itemView.findViewById<TextView>(R.id.journeycard_vehicles)
+        val initialStation = itemView.findViewById<TextView>(R.id.journeycard_initialStation)
+        val finalStation = itemView.findViewById<TextView>(R.id.journeycard_finalStation)
 
         init {
             itemView.setOnClickListener {
