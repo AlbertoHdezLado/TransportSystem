@@ -1,10 +1,14 @@
 package com.example.android.transportsystem
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import androidx.core.content.PackageManagerCompat
 import com.budiyev.android.codescanner.*
 
 class ReviewerActivity : AppCompatActivity() {
@@ -13,10 +17,19 @@ class ReviewerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_reviewer)
 
-        val intent = Intent(this, JourneyCheckedActivity::class.java)
-        intent.putExtra("journeyId", "d5ksygtyNaGwnr9DbaBt")
-        startActivity(intent)
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) ==
+                PackageManager.PERMISSION_DENIED) {
+            ActivityCompat.requestPermissions(this,arrayOf(Manifest.permission.CAMERA), 123)
+        } else {
+            startScanning()
+        }
 
+
+
+
+    }
+
+    private fun startScanning() {
         val scannerView = findViewById<CodeScannerView>(R.id.scanner_view)
 
         codeScanner = CodeScanner(this, scannerView)
@@ -33,7 +46,7 @@ class ReviewerActivity : AppCompatActivity() {
         // Callbacks
         codeScanner.decodeCallback = DecodeCallback {
             runOnUiThread {
-                val intent = Intent(this, MainActivity::class.java)
+                val intent = Intent(this, JourneyCheckedActivity::class.java)
                 intent.putExtra("journeyId", it.text)
                 startActivity(intent)
             }
@@ -59,5 +72,6 @@ class ReviewerActivity : AppCompatActivity() {
         codeScanner.releaseResources()
         super.onPause()
     }
+
 
 }
