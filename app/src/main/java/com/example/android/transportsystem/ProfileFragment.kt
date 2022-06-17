@@ -71,7 +71,7 @@ class ProfileFragment : Fragment() {
 
         val editProfileButton = v.findViewById<Button>(R.id.prof_editprofilebutton)
         editProfileButton.setOnClickListener {
-            val action = ProfileFragmentDirections.actionProfileFragmentToEditProfile()
+            val action = ProfileFragmentDirections.actionProfileFragmentToEditProfileFragment()
             findNavController().navigate(action)
         }
 

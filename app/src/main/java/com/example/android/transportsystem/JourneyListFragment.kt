@@ -37,7 +37,7 @@ class JourneyListFragment : Fragment() {
 
         myAdapter.setOnClickListener(object : JourneyAdapter.onItemClickListener{
             override fun onItemClick(position: Int) {
-                findNavController().navigate(R.id.action_journeyListFragment_to_joruneyFragment, Bundle().apply {
+                findNavController().navigate(R.id.journey_navigation, Bundle().apply {
                     putString("date" ,journeyArrayList[position].date)
                     putString("timeStart" ,journeyArrayList[position].timeStart)
                     putString("timeEnd" ,journeyArrayList[position].timeEnd)

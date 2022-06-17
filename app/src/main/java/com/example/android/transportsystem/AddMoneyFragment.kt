@@ -127,10 +127,12 @@ class AddMoneyFragment : Fragment() {
                             activity,
                             "Money added successfully", Toast.LENGTH_SHORT
                         ).show()
+                        findNavController().popBackStack()
                     }
                 } else {
                     Log.d("ERROR", "Error reading firebase data", documents.exception)
                 }
+
             }
 
         }
