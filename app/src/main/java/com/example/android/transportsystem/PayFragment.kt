@@ -13,6 +13,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
+import com.example.android.shelted.Classes.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentId
 import com.google.firebase.firestore.FirebaseFirestore
@@ -264,7 +265,7 @@ class PayFragment : Fragment() {
                     var min = (timeIni.minute + time) % 60
                     val timeEnd =
                         (timeIni.hour + hour).toString() + ":" + min.toString() + ":" + timeIni.second.toString()
-                    val email = FirebaseAuth.getInstance().currentUser?.email
+                    val timeStart = (timeIni.hour).toString() + ":" + (timeIni.minute).toString() + ":" + (timeIni.second).toString()
 
                     //Create the document to add
                     val journey: MutableMap<String, Any> = mutableMapOf()
@@ -274,53 +275,47 @@ class PayFragment : Fragment() {
                     journey["id"] = ""
                     journey["money"] = money
                     journey["time"] = time
-                    journey["timeStart"] =
-                        (timeIni.hour).toString() + ":" + (timeIni.minute).toString() + ":" + (timeIni.second).toString()
+                    journey["timeStart"] = timeStart
                     journey["timeEnd"] = timeEnd
                     journey["userEmail"] = email.toString()
                     journey["vehicles"] = shortestRoute
                     journey["stops"] = shortestStops
 
                     //add the document
-                    val db = FirebaseFirestore.getInstance()
-                    db.collection("journeys")
-                        .add(journey)
-                        .addOnSuccessListener {
-                            db.collection("journeys")
-                                .document(it.id)
-                                .update(
-                                    mapOf(
-                                        "id" to it.id
-                                    )
-                                )
-                            Toast.makeText(
-                                activity,
-                                "Ticket paid successfully, with:\n Start station: " + stations[posIni]
-                                        + "\n End station: " + stations[posEnd], Toast.LENGTH_SHORT
-                            ).show()
-                            //Changes money value
-                            val email = FirebaseAuth.getInstance().currentUser?.email
-                            val usersRef = db.collection("users")
-                            usersRef.whereEqualTo("email", email)
-                                .get()
-                                .addOnSuccessListener { documents ->
-                                    for (document in documents) {
-                                        if (document.exists()) {
-                                            db.collection("users")
-                                                .document(document.id)
-                                                .update(
-                                                    mapOf(
-                                                        "money" to (document.getDouble("money")
-                                                        !!.minus(money))
-                                                    )
+                    //Save user data in firebase
+                    val journeyBD = Journey(email, dateLong, shortestStops, shortestRoute, stationIni, stationEnd, money, time, timeStart, timeEnd)
+                    val journeydb = FirebaseFirestore.getInstance()
+                    val journeyRef = journeydb.collection("journeys")
+                    val UniqueID = rootRef.collection("journeys").document().id
+                    journeyRef.document(dateLong.toString() + timeStart + UniqueID).set(journeyBD)
+                        Toast.makeText(
+                            activity,
+                            "Ticket paid successfully, with:\n Start station: " + stations[posIni]
+                                    + "\n End station: " + stations[posEnd], Toast.LENGTH_SHORT
+                        ).show()
+                        //Changes money value
+                        val email = FirebaseAuth.getInstance().currentUser?.email
+                        val usersRef = db.collection("users")
+                        usersRef.whereEqualTo("email", email)
+                            .get()
+                            .addOnSuccessListener { documents ->
+                                for (document in documents) {
+                                    if (document.exists()) {
+                                        db.collection("users")
+                                            .document(document.id)
+                                            .update(
+                                                mapOf(
+                                                    "money" to (document.getDouble("money")
+                                                    !!.minus(money))
                                                 )
-                                            (activity as MainActivity).updateUserMoney()
-                                        } else {
-                                            Log.d(ContentValues.TAG, "The document doesn't exist.")
-                                        }
+                                            )
+                                        (activity as MainActivity).updateUserMoney()
+                                    } else {
+                                        Log.d(ContentValues.TAG, "The document doesn't exist.")
                                     }
                                 }
-                        }
+                            }
+
                         .addOnFailureListener {
                             Toast.makeText(
                                 activity,
