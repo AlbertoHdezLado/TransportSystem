@@ -13,15 +13,15 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentId
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.type.Date
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.android.awaitFrame
 import java.time.LocalDate
 import java.time.LocalTime
-import java.time.format.DateTimeFormatter
+import java.util.*
 
 
 class PayFragment : Fragment() {
@@ -196,6 +196,7 @@ class PayFragment : Fragment() {
                 //Shows the values
                 timeText.text = time.toString() + " min"
                 priceText.text = ("%.2f").format(time * minPrice) + " zł"
+                println(priceText.text.toString())
                 //If the route is the other way around
                 if(opposite){
                     shortestRoute.reverse()
@@ -241,6 +242,8 @@ class PayFragment : Fragment() {
             Handler().postDelayed({
                 if (!routeText.text.isEmpty() && !timeText.text.isEmpty() && !priceText.text.isEmpty() && ((time * minPrice) <= currentMoney)) {
                     val date = LocalDate.now()
+                    val dateString = date.year.toString() + date.monthValue.toString() + date.dayOfMonth.toString()
+                    val dateLong = dateString.toLong()
                     val timeIni = LocalTime.now()
                     val stationIni = stations[posIni]
                     val stationEnd = stations[posEnd]
@@ -253,7 +256,7 @@ class PayFragment : Fragment() {
 
                     //Create the document to add
                     val journey: MutableMap<String, Any> = mutableMapOf()
-                    journey["date"] = date.toString()
+                    journey["date"] = dateLong
                     journey["initialStation"] = stationIni
                     journey["finalStation"] = stationEnd
                     journey["id"] = ""
@@ -300,7 +303,6 @@ class PayFragment : Fragment() {
                                                     )
                                                 )
                                             (activity as MainActivity).updateUserMoney()
-                                            findNavController().popBackStack()
                                         } else {
                                             Log.d(ContentValues.TAG, "The document doesn't exist.")
                                         }
