@@ -242,7 +242,19 @@ class PayFragment : Fragment() {
             Handler().postDelayed({
                 if (!routeText.text.isEmpty() && !timeText.text.isEmpty() && !priceText.text.isEmpty() && ((time * minPrice) <= currentMoney)) {
                     val date = LocalDate.now()
-                    val dateString = date.year.toString() + date.monthValue.toString() + date.dayOfMonth.toString()
+                    var dateString = ""
+                    if(date.monthValue < 10){
+                        if( date.dayOfMonth < 10){
+                            dateString =
+                                date.year.toString() + 0 + date.monthValue.toString() + 0 + date.dayOfMonth.toString()
+                        } else {
+                            dateString =
+                                date.year.toString() + 0 + date.monthValue.toString() + date.dayOfMonth.toString()
+                        }
+                    } else {
+                        dateString =
+                            date.year.toString() + date.monthValue.toString() + date.dayOfMonth.toString()
+                    }
                     val dateLong = dateString.toLong()
                     val timeIni = LocalTime.now()
                     val stationIni = stations[posIni]
