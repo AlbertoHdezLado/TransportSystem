@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import java.time.LocalDate
@@ -333,6 +334,7 @@ class PayFragment : Fragment() {
                                             )
                                         )
                                     (activity as MainActivity).updateUserMoney()
+                                    findNavController().popBackStack()
                                 } else {
                                     Log.d(ContentValues.TAG, "The document doesn't exist.")
                                 }
