@@ -1,6 +1,7 @@
 package com.example.android.transportsystem
 
 import android.annotation.SuppressLint
+import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -38,7 +39,8 @@ class JourneyListFragment : Fragment() {
         myAdapter.setOnClickListener(object : JourneyAdapter.onItemClickListener{
             override fun onItemClick(position: Int) {
                 findNavController().navigate(R.id.action_journeyListFragment_to_journeyFragment, Bundle().apply {
-                    putString("date" ,journeyArrayList[position].date)
+                    val currentDate = journeyArrayList[position].date.toString().toCharArray()
+                    putString("date" ,"{}")
                     putString("timeStart" ,journeyArrayList[position].timeStart)
                     putString("timeEnd" ,journeyArrayList[position].timeEnd)
                     putString("id" ,journeyArrayList[position].id)
@@ -64,19 +66,18 @@ class JourneyListFragment : Fragment() {
         val auth = FirebaseAuth.getInstance()
         val email = auth.currentUser?.email
 
-        db.collection("journeys").whereEqualTo("userEmail", email).orderBy("date").orderBy("timeStart").addSnapshotListener(object : EventListener<QuerySnapshot> {
-            override fun onEvent(value: QuerySnapshot?, error: FirebaseFirestoreException?) {
-                if (error != null) {
-                    Log.e("Firestore Error", error.message.toString())
-                    return
-                }
-                for (dc: DocumentChange in value?.documentChanges!!) {
-                    if (dc.type == DocumentChange.Type.ADDED) {
-                        journeyArrayList.add(dc.document.toObject(Journey::class.java))
-                    }
+        journeyArrayList.clear()
+
+        db.collection("journeys").whereEqualTo("userEmail", email).get()
+            .addOnSuccessListener { documents ->
+                for (document in documents) {
+                    println(document.toObject(Journey::class.java).toString())
+                    journeyArrayList.add(document.toObject(Journey::class.java))
                 }
                 myAdapter.notifyDataSetChanged()
             }
-        })
+            .addOnFailureListener { exception ->
+                Log.w(TAG, "Error getting documents: ", exception)
+            }
     }
 }

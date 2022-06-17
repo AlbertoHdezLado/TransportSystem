@@ -3,7 +3,7 @@ package com.example.android.transportsystem
 data class Journey(
     var id: String ?= null,
     var userEmail: String ?= null,
-    var date: String ?= null,
+    var date: Long ?= null,
     var stops: List<String> ?= null,
     var vehicles: List<String> ?= null,
     var initialStation: String ?= null,

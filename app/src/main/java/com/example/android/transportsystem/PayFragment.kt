@@ -13,6 +13,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentId
 import com.google.firebase.firestore.FirebaseFirestore
@@ -20,6 +21,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.android.awaitFrame
 import java.time.LocalDate
 import java.time.LocalTime
+import java.time.format.DateTimeFormatter
 
 
 class PayFragment : Fragment() {
@@ -194,7 +196,6 @@ class PayFragment : Fragment() {
                 //Shows the values
                 timeText.text = time.toString() + " min"
                 priceText.text = ("%.2f").format(time * minPrice) + " zł"
-                println(priceText.text.toString())
                 //If the route is the other way around
                 if(opposite){
                     shortestRoute.reverse()
@@ -299,6 +300,7 @@ class PayFragment : Fragment() {
                                                     )
                                                 )
                                             (activity as MainActivity).updateUserMoney()
+                                            findNavController().popBackStack()
                                         } else {
                                             Log.d(ContentValues.TAG, "The document doesn't exist.")
                                         }
