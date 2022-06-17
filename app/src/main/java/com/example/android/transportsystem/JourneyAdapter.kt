@@ -50,7 +50,7 @@ class JourneyAdapter (private val journeyList : ArrayList<Journey>) : RecyclerVi
 
         init {
             itemView.setOnClickListener {
-                listener.onItemClick(adapterPosition )
+                listener.onItemClick(adapterPosition)
             }
         }
     }

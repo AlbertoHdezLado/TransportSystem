@@ -37,7 +37,7 @@ class JourneyListFragment : Fragment() {
 
         myAdapter.setOnClickListener(object : JourneyAdapter.onItemClickListener{
             override fun onItemClick(position: Int) {
-                findNavController().navigate(R.id.journey_navigation, Bundle().apply {
+                findNavController().navigate(R.id.action_journeyListFragment_to_journeyFragment, Bundle().apply {
                     putString("date" ,journeyArrayList[position].date)
                     putString("timeStart" ,journeyArrayList[position].timeStart)
                     putString("timeEnd" ,journeyArrayList[position].timeEnd)
@@ -65,7 +65,6 @@ class JourneyListFragment : Fragment() {
         val email = auth.currentUser?.email
 
         db.collection("journeys").whereEqualTo("userEmail", email).orderBy("date").orderBy("timeStart").addSnapshotListener(object : EventListener<QuerySnapshot> {
-            @SuppressLint("NotifyDataSetChanged")
             override fun onEvent(value: QuerySnapshot?, error: FirebaseFirestoreException?) {
                 if (error != null) {
                     Log.e("Firestore Error", error.message.toString())
