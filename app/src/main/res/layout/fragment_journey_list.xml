@@ -12,7 +12,7 @@
         android:layout_marginTop="30dp"
         android:text="@string/RecentJourneys"
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textColor="@color/primary"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

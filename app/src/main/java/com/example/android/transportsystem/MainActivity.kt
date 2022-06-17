@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
                         name.text = "${
                             document.getString("name").toString()
                         } ${document.getString("surname").toString()}"
-                        money.text = "${("%.2f").format(document.getDouble("money"))} pln"
+                        money.text = "${("%.2f").format(document.getDouble("money"))} zł"
                     } else {
                         Log.d(TAG, "The document doesn't exist.")
                     }

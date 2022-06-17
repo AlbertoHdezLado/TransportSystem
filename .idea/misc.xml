@@ -9,7 +9,7 @@
         <entry key="..\:/Users/alber/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/activity_reviewer.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/add_money.xml" value="0.17300724637681159" />
-        <entry key="..\:/Users/alber/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/fragment_add_money.xml" value="0.17300724637681159" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/fragment_add_money.xml" value="0.4" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/fragment_edit_profile.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/fragment_history.xml" value="0.17300724637681159" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/fragment_joruney.xml" value="0.17300724637681159" />
@@ -35,7 +35,7 @@
         <entry key="..\:/Users/alber/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/scanner_animation.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/settings.xml" value="0.17300724637681159" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/spinner_item.xml" value="0.13020833333333334" />
-        <entry key="..\:/Users/alber/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/transaction_card.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/alber/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/transaction_card.xml" value="0.536" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/TransportSystem/app/src/main/res/layout/wallet.xml" value="0.17300724637681159" />
         <entry key="..\:/Users/alber/AndroidStudioProjects/TransportSystem/app/src/main/res/menu/bottom_navigation_view.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/alber/Desktop/TransportSystem/app/src/main/res/drawable/logo.xml" value="0.14635416666666667" />

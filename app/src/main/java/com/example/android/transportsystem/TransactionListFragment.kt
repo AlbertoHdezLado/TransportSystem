@@ -47,20 +47,15 @@ class TransactionListFragment : Fragment() {
         val auth = FirebaseAuth.getInstance()
         val email = auth.currentUser?.email
 
-        db.collection("transactions").whereEqualTo("userEmail", email).orderBy("date").addSnapshotListener(object: EventListener<QuerySnapshot>{
-            override fun onEvent(value: QuerySnapshot?, error: FirebaseFirestoreException?) {
-                if (error != null){
-                    Log.e("Firestore Error", error.message.toString())
-                    return
-                }
-                for(dc: DocumentChange in value?.documentChanges!!) {
-                    if (dc.type == DocumentChange.Type.ADDED) {
-                        transactionArrayList.add(dc.document.toObject(Transaction::class.java))
+        db.collection("transactions").orderBy("date", Query.Direction.DESCENDING).get()
+            .addOnSuccessListener { documents ->
+                for (document in documents) {
+                    if(document.get("userEmail")!! == email){
+                        transactionArrayList.add(document.toObject(Transaction::class.java))
                     }
                 }
                 myAdapter.notifyDataSetChanged()
             }
-        })
     }
 
 }

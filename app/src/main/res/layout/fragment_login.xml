@@ -64,6 +64,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:text="@string/Email"
+        android:textColor="@color/primary"
         app:layout_constraintStart_toStartOf="@+id/log_emailtext"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -73,6 +74,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:text="@string/Password"
+        android:textColor="@color/primary"
         app:layout_constraintStart_toStartOf="@+id/log_passwordtext"
         app:layout_constraintTop_toBottomOf="@+id/log_emailtext" />
 

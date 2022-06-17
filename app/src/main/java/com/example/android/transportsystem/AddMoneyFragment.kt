@@ -16,6 +16,7 @@ import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import java.time.LocalDate
+import java.time.LocalTime
 
 class AddMoneyFragment : Fragment() {
     /*private val db: FirebaseFirestore = FirebaseFirestore.getInstance()
@@ -25,7 +26,6 @@ class AddMoneyFragment : Fragment() {
     private val cardHolderName: MutableMap<String, String> = mutableMapOf()
     private val cardNumber: MutableMap<String, String> = mutableMapOf()
     private val dueDate: MutableMap<String, String> = mutableMapOf()
-    private val pin: MutableMap<String, String> = mutableMapOf()
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
@@ -41,7 +41,6 @@ class AddMoneyFragment : Fragment() {
         val cardHolderNameText = v.findViewById<EditText>(R.id.addm_cardHolderNameName)
         val dueDateDate = v.findViewById<EditText>(R.id.addm_dueDateDate)
         val backNumberText = v.findViewById<EditText>(R.id.addm_backNumberNumber)
-        val passwordText = v.findViewById<EditText>(R.id.addm_passwordNumber)
         val addMoneyButton = v.findViewById<Button>(R.id.addm_addMoneyButton)
         getCreditCardsData()
 
@@ -57,7 +56,6 @@ class AddMoneyFragment : Fragment() {
                             && cardHolderName[document.id]!!.equals(cardHolderNameText.text.toString())
                             && dueDate[document.id]!!.equals(dueDateDate.text.toString())
                             && backNumber[document.id]!!.equals(backNumberText.text.toString())
-                            && pin[document.id]!!.equals(passwordText.text.toString())
                         ) {
                             //Changes money value
                             val email = FirebaseAuth.getInstance().currentUser?.email
@@ -117,8 +115,6 @@ class AddMoneyFragment : Fragment() {
                                 "[0-9/]+".toRegex())
                             && !backNumberText.text.isEmpty() && backNumberText.text.length == 3 && backNumberText.text.matches(
                                 "[0-9]+".toRegex())
-                            && !passwordText.text.isEmpty() && passwordText.text.length == 4 && passwordText.text.matches(
-                                "[0-9]+".toRegex())
                         ) {
                             //Data to add Credit Card
                             val creditCard: MutableMap<String, Any> = mutableMapOf()
@@ -126,7 +122,6 @@ class AddMoneyFragment : Fragment() {
                             creditCard["cardHolderName"] = cardHolderNameText.text.toString()
                             creditCard["cardNumber"] = cardNumberText.text.toString()
                             creditCard["dueDate"] = dueDateDate.text.toString()
-                            creditCard["pin"] = passwordText.text.toString()
 
                             //add the creditCard
                             dbCollection
@@ -168,11 +163,33 @@ class AddMoneyFragment : Fragment() {
                                     ).show()
                                 }
                             //Data to add new transaction
+                            val date = LocalDate.now()
+                            var dateString = ""
+                            val timeIni = LocalTime.now()
+                            val timeStart =
+                                (if (timeIni.hour < 10) "0${timeIni.hour}" else timeIni.hour.toString()) +
+                                        (if (timeIni.minute < 10) "0${timeIni.minute}" else timeIni.minute.toString()) +
+                                        (if (timeIni.second < 10) "0${timeIni.second}" else timeIni.second.toString())
+
+                            if (date.monthValue < 10) {
+                                if (date.dayOfMonth < 10) {
+                                    dateString =
+                                        date.year.toString() + 0 + date.monthValue.toString() + 0 + date.dayOfMonth.toString() + timeStart
+
+                                } else {
+                                    dateString =
+                                        date.year.toString() + 0 + date.monthValue.toString() + date.dayOfMonth.toString() + timeStart
+                                }
+                            } else {
+                                dateString =
+                                    date.year.toString() + date.monthValue.toString() + date.dayOfMonth.toString() + timeStart
+                            }
+
                             val email = FirebaseAuth.getInstance().currentUser?.email
                             val transaction: MutableMap<String, Any> = mutableMapOf()
-                            transaction["date"] = LocalDate.now().toString()
+                            transaction["date"] = dateString.toLong()
                             transaction["id"] = ""
-                            transaction["money"] = quantityText.text.toString().toInt()
+                            transaction["money"] = quantityText.text.toString().toLong()
                             transaction["userEmail"] = email.toString()
 
                             //add the transaction
@@ -227,7 +244,6 @@ class AddMoneyFragment : Fragment() {
                     cardHolderName[document.id] = document.get("cardHolderName") as String
                     cardNumber[document.id] = document.get("cardNumber") as String
                     dueDate[document.id] = document.get("dueDate") as String
-                    pin[document.id] = document.get("pin") as String
                 }
             } else {
                 Log.d("ERROR", "Error reading firebase data", documents.exception)
