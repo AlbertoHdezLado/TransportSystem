@@ -2,6 +2,7 @@ package com.example.android.transportsystem
 
 import android.annotation.SuppressLint
 import android.content.ContentValues
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -12,10 +13,12 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.*
 import kotlinx.android.synthetic.main.activity_main.*
+import java.time.LocalDate
 import java.util.*
 import kotlin.properties.Delegates
 
@@ -29,6 +32,7 @@ class AddMoneyFragment : Fragment() {
     private val dueDate: MutableMap<String, String> = mutableMapOf()
     private val pin: MutableMap<String, String> = mutableMapOf()
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
@@ -80,6 +84,29 @@ class AddMoneyFragment : Fragment() {
                                             }
                                         }
                                     }
+                                //Data to add new transaction
+                                val transaction: MutableMap<String, Any> = mutableMapOf()
+                                transaction["date"] = LocalDate.now().toString()
+                                transaction["id"] = ""
+                                transaction["money"] = quantityText.text.toString().toInt()
+                                transaction["userEmail"] = email.toString()
+
+                                //add the transaction
+                                db.collection("transactions")
+                                    .add(transaction)
+                                    .addOnSuccessListener {
+                                        db.collection("transactions")
+                                            .document(it.id)
+                                            .update( mapOf(
+                                                "id" to it.id
+                                            ))
+                                    }
+                                    .addOnFailureListener {
+                                        Toast.makeText(
+                                            activity,
+                                            "Failed to add the Credit Card", Toast.LENGTH_SHORT
+                                        ).show()
+                                    }
                                 contained = true
                                 break
                         }
@@ -92,7 +119,7 @@ class AddMoneyFragment : Fragment() {
                             && !dueDateDate.text.isEmpty() && dueDateDate.text.length == 5 && dueDateDate.text.matches("[0-9/]+".toRegex())
                             && !backNumberText.text.isEmpty()  && backNumberText.text.length == 3 && backNumberText.text.matches("[0-9]+".toRegex())
                             && !passwordText.text.isEmpty() && passwordText.text.length == 4 && passwordText.text.matches("[0-9]+".toRegex())){
-
+                                //Data to add Credit Card
                                 val creditCard: MutableMap<String, Any> = mutableMapOf()
                                 creditCard["backNumber"] = backNumberText.text.toString()
                                 creditCard["cardHolderName"] = cardHolderNameText.text.toString()
@@ -100,14 +127,58 @@ class AddMoneyFragment : Fragment() {
                                 creditCard["dueDate"] = dueDateDate.text.toString()
                                 creditCard["pin"] = passwordText.text.toString()
 
-                                //add the document
+                                //add the creditCard
                                 dbCollection
                                     .add(creditCard)
                                     .addOnSuccessListener {
                                         Toast.makeText(
                                             activity,
-                                            "Card successfully added to the system.\nPlease, reStart app to validate the card.", Toast.LENGTH_SHORT
+                                            "Card and money successfully added to the system.\nPlease, reStart app to validate the card.", Toast.LENGTH_SHORT
                                         ).show()
+                                        //Changes money value
+                                        val email = FirebaseAuth.getInstance().currentUser?.email
+                                        val usersRef = db.collection("users")
+                                        usersRef.whereEqualTo("email", email)
+                                            .get()
+                                            .addOnSuccessListener { documents ->
+                                                for (document in documents) {
+                                                    if (document.exists()) {
+                                                        db.collection("users")
+                                                            .document(document.id)
+                                                            .update(mapOf(
+                                                                "money" to (document.getDouble("money")
+                                                                !!.plus(quantityText.text.toString().toInt()))
+                                                            ))
+                                                        (activity as MainActivity).updateUserMoney()
+                                                    } else {
+                                                        Log.d(ContentValues.TAG, "The document doesn't exist.")
+                                                    }
+                                                }
+                                            }
+                                    }
+                                    .addOnFailureListener {
+                                        Toast.makeText(
+                                            activity,
+                                            "Failed to add the Credit Card", Toast.LENGTH_SHORT
+                                        ).show()
+                                    }
+                                //Data to add new transaction
+                                val email = FirebaseAuth.getInstance().currentUser?.email
+                                val transaction: MutableMap<String, Any> = mutableMapOf()
+                                transaction["date"] = LocalDate.now().toString()
+                                transaction["id"] = ""
+                                transaction["money"] = quantityText.text.toString().toInt()
+                                transaction["userEmail"] = email.toString()
+
+                                //add the transaction
+                                db.collection("transactions")
+                                    .add(transaction)
+                                    .addOnSuccessListener {
+                                        db.collection("transactions")
+                                            .document(it.id)
+                                            .update( mapOf(
+                                                "id" to it.id
+                                            ))
                                     }
                                     .addOnFailureListener {
                                         Toast.makeText(
