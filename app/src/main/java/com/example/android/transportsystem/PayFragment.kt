@@ -25,6 +25,8 @@ class PayFragment : Fragment() {
         super.onCreate(savedInstanceState)
     }
 
+    var appMoney = 0.0
+    var taxMoney = 0.0
     @SuppressLint("SetTextI18n")
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
@@ -102,7 +104,6 @@ class PayFragment : Fragment() {
             )
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             finalStation.adapter = adapter
-            //adapter.notifyDataSetChanged()
 
             finalStation.onItemSelectedListener = object :
                 AdapterView.OnItemSelectedListener {
@@ -245,6 +246,7 @@ class PayFragment : Fragment() {
                         }
                     }
                 }
+            //Checks if there is enough money to pay
             Handler().postDelayed({
                 if (!routeText.text.isEmpty() && !timeText.text.isEmpty() && !priceText.text.isEmpty() && ((time * minPrice) <= currentMoney)) {
                     val date = LocalDate.now()
@@ -317,7 +319,7 @@ class PayFragment : Fragment() {
                         "Ticket paid successfully, with:\n Start station: " + stations[posIni]
                                 + "\n End station: " + stations[posEnd], Toast.LENGTH_SHORT
                     ).show()
-                    //Changes money value
+                    //Changes money value to pay
                     val email = FirebaseAuth.getInstance().currentUser?.email
                     val usersRef = db.collection("users")
                     usersRef.whereEqualTo("email", email)
@@ -334,6 +336,7 @@ class PayFragment : Fragment() {
                                             )
                                         )
                                     (activity as MainActivity).updateUserMoney()
+                                    moneyDivision(money)
                                     findNavController().popBackStack()
                                 } else {
                                     Log.d(ContentValues.TAG, "The document doesn't exist.")
@@ -373,6 +376,13 @@ class PayFragment : Fragment() {
         } else {
             return 3
         }
+    }
+    /*
+     * Divides the money in beneficts and taxes
+     */
+    private fun moneyDivision(m: Double){
+        appMoney += (m * 0.9)
+        taxMoney += (m * 0.1)
     }
 
 }
