@@ -5,6 +5,7 @@ import android.app.ActivityManager
 import android.content.ContentValues
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -222,79 +223,101 @@ class PayFragment : Fragment() {
         val buttonPay = v.findViewById<Button>(R.id.pay_payButton)
         buttonPay.setOnClickListener {
             //Show confirm message and upload journey to database
-            if(!routeText.text.isEmpty() && !timeText.text.isEmpty() && !priceText.text.isEmpty()) {
-                val date = LocalDate.now()
-                val timeIni = LocalTime.now()
-                val stationIni = stations[posIni]
-                val stationEnd = stations[posEnd]
-                val money = time * minPrice
-                var hour = ((timeIni.minute + time) / 60)
-                var min = (timeIni.minute + time) % 60
-                val timeEnd = (timeIni.hour + hour).toString() + ":" + min.toString() + ":" + timeIni.second.toString()
-                val email = FirebaseAuth.getInstance().currentUser?.email
+            val email = FirebaseAuth.getInstance().currentUser?.email
+            var currentMoney = 0.0
+            val db = FirebaseFirestore.getInstance()
+            db.collection("users").whereEqualTo("email", email)
+                .get()
+                .addOnSuccessListener { documents ->
+                    for (document in documents) {
+                        if (document.exists()) {
+                            currentMoney = document.get("money").toString().toDouble()
+                        } else {
+                            Log.d(ContentValues.TAG, "The document doesn't exist.")
+                        }
+                    }
+                }
+            Handler().postDelayed({
+                if (!routeText.text.isEmpty() && !timeText.text.isEmpty() && !priceText.text.isEmpty() && ((time * minPrice) <= currentMoney)) {
+                    val date = LocalDate.now()
+                    val timeIni = LocalTime.now()
+                    val stationIni = stations[posIni]
+                    val stationEnd = stations[posEnd]
+                    val money = time * minPrice
+                    var hour = ((timeIni.minute + time) / 60)
+                    var min = (timeIni.minute + time) % 60
+                    val timeEnd =
+                        (timeIni.hour + hour).toString() + ":" + min.toString() + ":" + timeIni.second.toString()
+                    val email = FirebaseAuth.getInstance().currentUser?.email
 
-                //Create the document to add
-                val journey: MutableMap<String, Any> = mutableMapOf()
-                journey["date"] = date.toString()
-                journey["initialStation"] = stationIni
-                journey["finalStation"] = stationEnd
-                journey["id"] = ""
-                journey["money"] = money
-                journey["time"] = time
-                journey["timeStart"] = (timeIni.hour).toString() + ":" + (timeIni.minute).toString() + ":" + (timeIni.second).toString()
-                journey["timeEnd"] = timeEnd
-                journey["userEmail"] = email.toString()
-                journey["vehicles"] = shortestRoute
-                journey["stops"] = shortestStops
+                    //Create the document to add
+                    val journey: MutableMap<String, Any> = mutableMapOf()
+                    journey["date"] = date.toString()
+                    journey["initialStation"] = stationIni
+                    journey["finalStation"] = stationEnd
+                    journey["id"] = ""
+                    journey["money"] = money
+                    journey["time"] = time
+                    journey["timeStart"] =
+                        (timeIni.hour).toString() + ":" + (timeIni.minute).toString() + ":" + (timeIni.second).toString()
+                    journey["timeEnd"] = timeEnd
+                    journey["userEmail"] = email.toString()
+                    journey["vehicles"] = shortestRoute
+                    journey["stops"] = shortestStops
 
-                //add the document
-                val db = FirebaseFirestore.getInstance()
-                db.collection("journeys")
-                    .add(journey)
-                    .addOnSuccessListener {
-                        db.collection("journeys")
-                            .document(it.id)
-                            .update( mapOf(
-                                "id" to it.id
-                            ))
-                        Toast.makeText(
-                            activity,
-                            "Ticket paid successfully, with:\n Start station: " + stations[posIni]
-                                    + "\n End station: " + stations[posEnd], Toast.LENGTH_SHORT
-                        ).show()
-                        //Changes money value
-                        val email = FirebaseAuth.getInstance().currentUser?.email
-                        val usersRef = db.collection("users")
-                        usersRef.whereEqualTo("email", email)
-                            .get()
-                            .addOnSuccessListener { documents ->
-                                for (document in documents) {
-                                    if (document.exists()) {
-                                        db.collection("users")
-                                            .document(document.id)
-                                            .update(mapOf(
-                                                "money" to (document.getDouble("money")
-                                                !!.minus(money))
-                                            ))
-                                        (activity as MainActivity).updateUserMoney()
-                                    } else {
-                                        Log.d(ContentValues.TAG, "The document doesn't exist.")
+                    //add the document
+                    val db = FirebaseFirestore.getInstance()
+                    db.collection("journeys")
+                        .add(journey)
+                        .addOnSuccessListener {
+                            db.collection("journeys")
+                                .document(it.id)
+                                .update(
+                                    mapOf(
+                                        "id" to it.id
+                                    )
+                                )
+                            Toast.makeText(
+                                activity,
+                                "Ticket paid successfully, with:\n Start station: " + stations[posIni]
+                                        + "\n End station: " + stations[posEnd], Toast.LENGTH_SHORT
+                            ).show()
+                            //Changes money value
+                            val email = FirebaseAuth.getInstance().currentUser?.email
+                            val usersRef = db.collection("users")
+                            usersRef.whereEqualTo("email", email)
+                                .get()
+                                .addOnSuccessListener { documents ->
+                                    for (document in documents) {
+                                        if (document.exists()) {
+                                            db.collection("users")
+                                                .document(document.id)
+                                                .update(
+                                                    mapOf(
+                                                        "money" to (document.getDouble("money")
+                                                        !!.minus(money))
+                                                    )
+                                                )
+                                            (activity as MainActivity).updateUserMoney()
+                                        } else {
+                                            Log.d(ContentValues.TAG, "The document doesn't exist.")
+                                        }
                                     }
                                 }
-                            }
-                    }
-                    .addOnFailureListener {
-                        Toast.makeText(
-                            activity,
-                            "Journey failed to buy", Toast.LENGTH_SHORT
-                        ).show()
-                    }
+                        }
+                        .addOnFailureListener {
+                            Toast.makeText(
+                                activity,
+                                "Journey failed to buy", Toast.LENGTH_SHORT
+                            ).show()
+                        }
 
-            } else {
-                Toast.makeText(
-                    activity, "Missing Data to Pay", Toast.LENGTH_SHORT
-                ).show()
-            }
+                } else {
+                    Toast.makeText(
+                        activity, "Missing Data or money to Pay", Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }, 200)
         }
 
         return v
