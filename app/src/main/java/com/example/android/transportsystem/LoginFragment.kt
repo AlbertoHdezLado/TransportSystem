@@ -3,6 +3,7 @@ package com.example.android.transportsystem
 import android.content.ContentValues
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.text.TextUtils
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -15,6 +16,7 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.*
+import kotlinx.coroutines.delay
 
 class LoginFragment : Fragment() {
 
@@ -50,21 +52,24 @@ class LoginFragment : Fragment() {
                         }
                     }
                 }
-                auth.signInWithEmailAndPassword(txt_email, txt_password).addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        if (type == "0")
-                            startActivity(Intent(activity, MainActivity::class.java))
-                        if (type == "1")
-                            startActivity(Intent(activity, ReviewerActivity::class.java))
+                Handler().postDelayed({
+                    auth.signInWithEmailAndPassword(txt_email, txt_password).addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            if (type == "0")
+                                startActivity(Intent(activity, MainActivity::class.java))
+                            if (type == "1")
+                                startActivity(Intent(activity, ReviewerActivity::class.java))
 
-                        Toast.makeText(activity, "Logged-in successful!", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(activity, "Logged-in successful!", Toast.LENGTH_SHORT).show()
 
-                    } else {
-                        Toast.makeText(activity,
-                            "Your email or password doesn't exist!",
-                            Toast.LENGTH_SHORT).show()
+                        } else {
+                            Toast.makeText(activity,
+                                "Your email or password doesn't exist!",
+                                Toast.LENGTH_SHORT).show()
+                        }
                     }
-                }
+                }, 200)
+
             }
 
 

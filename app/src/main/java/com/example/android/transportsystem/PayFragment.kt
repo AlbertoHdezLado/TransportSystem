@@ -193,6 +193,7 @@ class PayFragment : Fragment() {
                 //Shows the values
                 timeText.text = time.toString() + " min"
                 priceText.text = ("%.2f").format(time * minPrice) + " zł"
+                println(priceText.text.toString())
                 //If the route is the other way around
                 if(opposite){
                     shortestRoute.reverse()

@@ -114,7 +114,7 @@ class AddMoneyFragment : Fragment() {
                     //If credit card is not in dataBase, we add it
                     if(!contained){
                         //When the card information is correct we add it
-                        if(!cardNumberText.text.isEmpty() && cardNumberText.text.length == 12 && cardNumberText.text.matches("[0-9]+".toRegex())
+                        if(!cardNumberText.text.isEmpty() && cardNumberText.text.length == 16 && cardNumberText.text.matches("[0-9]+".toRegex())
                             && !cardHolderNameText.text.isEmpty()
                             && !dueDateDate.text.isEmpty() && dueDateDate.text.length == 5 && dueDateDate.text.matches("[0-9/]+".toRegex())
                             && !backNumberText.text.isEmpty()  && backNumberText.text.length == 3 && backNumberText.text.matches("[0-9]+".toRegex())
