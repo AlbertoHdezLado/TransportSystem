@@ -32,7 +32,11 @@ class ReviewerActivity : AppCompatActivity() {
     private fun startScanning() {
         val scannerView = findViewById<CodeScannerView>(R.id.scanner_view)
 
-        codeScanner = CodeScanner(this, scannerView)
+        val intent = Intent(this, JourneyCheckedActivity::class.java)
+        intent.putExtra("journeyId", "3YLHStlEqlvpkZHZyzKl")
+        startActivity(intent)
+
+        /*codeScanner = CodeScanner(this, scannerView)
 
         // Parameters (default values)
         codeScanner.camera = CodeScanner.CAMERA_BACK // or CAMERA_FRONT or specific camera id
@@ -60,16 +64,16 @@ class ReviewerActivity : AppCompatActivity() {
 
         scannerView.setOnClickListener {
             codeScanner.startPreview()
-        }
+        }*/
     }
 
     override fun onResume() {
         super.onResume()
-        codeScanner.startPreview()
+        //codeScanner.startPreview()
     }
 
     override fun onPause() {
-        codeScanner.releaseResources()
+        //codeScanner.releaseResources()
         super.onPause()
     }
 

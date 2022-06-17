@@ -22,10 +22,10 @@ class JourneyCheckedActivity : AppCompatActivity() {
         val routeText = findViewById<TextView>(R.id.journeychecked_route)
 
         db.collection("journeys").document(journeyId!!).get().addOnSuccessListener {
-            Log.i("firebase", "Got value ${it["date"]}")
-            dateText.text = "${it["date"]}\n${it["timeStart"]} - ${it["timeEnd"]}"
+            val currentDate = it["date"].toString().toCharArray()
+            dateText.text = "${currentDate[0]}${currentDate[1]}${currentDate[2]}${currentDate[3]}-${currentDate[4]}${currentDate[5]}-${currentDate[6]}${currentDate[7]}\n${it["timeStart"]} - ${it["timeEnd"]}"
             idText.text = journeyId
-            moneyText.text = "${it["money"]}"
+            moneyText.text = "${it["money"]} zł"
             userEmailText.text = "${it["userEmail"]}"
             val stations = it["stops"] as ArrayList<*>
             val vehicles = it["vehicles"] as ArrayList<*>

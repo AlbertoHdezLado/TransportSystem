@@ -36,7 +36,8 @@
 
             <TextView
                 android:id="@+id/journeychecked_id"
-                android:layout_width="match_parent" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
             <Space
                 android:layout_width="match_parent"
@@ -52,7 +53,8 @@
 
             <TextView
                 android:id="@+id/journeychecked_useremail"
-                android:layout_width="match_parent" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
             <Space
                 android:layout_width="match_parent"
@@ -69,7 +71,8 @@
 
             <TextView
                 android:id="@+id/journeychecked_date"
-                android:layout_width="match_parent" />
+                android:layout_width="match_parent"
+                 android:layout_height="wrap_content"/>
 
             <Space
                 android:layout_width="match_parent"
@@ -86,7 +89,8 @@
 
             <TextView
                 android:id="@+id/journeychecked_money"
-                android:layout_width="match_parent" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
             <Space
                 android:layout_width="match_parent"
