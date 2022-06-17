@@ -26,8 +26,8 @@ class JourneyFragment : Fragment() {
         val idText = v.findViewById<TextView>(R.id.journey_id)
         val moneyText = v.findViewById<TextView>(R.id.journey_money)
         val routeText = v.findViewById<TextView>(R.id.journey_route)
-
-        dateText.text = "${requireArguments().getString("date")}\n${requireArguments().getString("timeStart")} - ${requireArguments().getString("timeEnd")}"
+        val currentDate = requireArguments().getLong("date").toString().toCharArray()
+        dateText.text = "${currentDate[0]}${currentDate[1]}${currentDate[2]}${currentDate[3]}-${currentDate[4]}${currentDate[5]}-${currentDate[6]}${currentDate[7]}\n${requireArguments().getString("timeStart")} - ${requireArguments().getString("timeEnd")}"
         idText.text = requireArguments().getString("id")
         moneyText.text = requireArguments().getLong("money").toString()
 

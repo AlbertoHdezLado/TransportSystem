@@ -1,7 +1,6 @@
 package com.example.android.transportsystem
 
 import android.annotation.SuppressLint
-import android.app.ActivityManager
 import android.content.ContentValues
 import android.os.Build
 import android.os.Bundle
@@ -13,16 +12,10 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
-import com.example.android.shelted.Classes.User
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.DocumentId
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.type.Date
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.coroutines.android.awaitFrame
 import java.time.LocalDate
 import java.time.LocalTime
-import java.util.*
 
 
 class PayFragment : Fragment() {
@@ -30,6 +23,7 @@ class PayFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
+
     @SuppressLint("SetTextI18n")
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
@@ -44,8 +38,7 @@ class PayFragment : Fragment() {
         val subjectsRef = rootRef.collection("stations")
 
         val stations: MutableList<String> = mutableListOf()
-        subjectsRef.get().
-        addOnCompleteListener { documents ->
+        subjectsRef.get().addOnCompleteListener { documents ->
             if (documents.isSuccessful) {
                 for (document in documents.result) {
                     stations.add(document.id)
@@ -61,8 +54,7 @@ class PayFragment : Fragment() {
         val vehicles: MutableList<String> = mutableListOf()
 
         val subjectsRef2 = rootRef.collection("vehicles")
-        subjectsRef2.get().
-        addOnCompleteListener { documents ->
+        subjectsRef2.get().addOnCompleteListener { documents ->
             if (documents.isSuccessful) {
                 for (document in documents.result) {
                     vehicles.add(document.id)
@@ -86,13 +78,16 @@ class PayFragment : Fragment() {
             //adapter.notifyDataSetChanged()
 
             initialStation.onItemSelectedListener = object :
-                AdapterView.OnItemSelectedListener{
-                override fun onItemSelected(parent: AdapterView<*>,
-                                            view: View, position: Int, id: Long) {
-                    if(stations[position] != "") {
+                AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(
+                    parent: AdapterView<*>,
+                    view: View, position: Int, id: Long,
+                ) {
+                    if (stations[position] != "") {
                         posIni = position
                     }
                 }
+
                 override fun onNothingSelected(parent: AdapterView<*>) {
                     // write code to perform some action
                 }
@@ -111,8 +106,9 @@ class PayFragment : Fragment() {
             finalStation.onItemSelectedListener = object :
                 AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(
-                    parent: AdapterView<*>, view: View, position: Int, id: Long) {
-                    if(stations[position] != "") {
+                    parent: AdapterView<*>, view: View, position: Int, id: Long,
+                ) {
+                    if (stations[position] != "") {
                         posEnd = position
                     }
                 }
@@ -139,7 +135,7 @@ class PayFragment : Fragment() {
                 shortestStops.clear()
                 time = 0
                 var opposite = false
-                if(posIni > posEnd){
+                if (posIni > posEnd) {
                     opposite = true
                     val temporal = posIni
                     posIni = posEnd
@@ -155,7 +151,10 @@ class PayFragment : Fragment() {
                 while (!end) {
                     //If stations are in the same route
                     for (stationVehicle in vehicleStations.values) {
-                        if (stationVehicle.contains(station1Temporal) && stationVehicle.contains(station2) && !shortestRoute.contains(vehicles[vehicleStations.values.indexOf(stationVehicle)])) {
+                        if (stationVehicle.contains(station1Temporal) && stationVehicle.contains(
+                                station2) && !shortestRoute.contains(vehicles[vehicleStations.values.indexOf(
+                                stationVehicle)])
+                        ) {
                             shortestRoute.add(vehicles[vehicleStations.values.indexOf(stationVehicle)])
                             shortestStops.add(station2)
                             posTemporal = stationVehicle.indexOf(station1Temporal)
@@ -173,10 +172,13 @@ class PayFragment : Fragment() {
                         }
                     }
                     //When there are transbords implicated
-                    if(!end) {
+                    if (!end) {
                         for (stationVehicle in vehicleStations.values) {
-                            if(stationVehicle.contains(station1Temporal) && !shortestRoute.contains(vehicles[vehicleStations.values.indexOf(stationVehicle)])) {
-                                shortestRoute.add(vehicles[vehicleStations.values.indexOf(stationVehicle)])
+                            if (stationVehicle.contains(station1Temporal) && !shortestRoute.contains(
+                                    vehicles[vehicleStations.values.indexOf(stationVehicle)])
+                            ) {
+                                shortestRoute.add(vehicles[vehicleStations.values.indexOf(
+                                    stationVehicle)])
                                 posTemporal = stationVehicle.indexOf(station1Temporal)
                                 station1Temporal = stationVehicle.last()
                                 shortestStops.add(station1Temporal)
@@ -199,7 +201,7 @@ class PayFragment : Fragment() {
                 priceText.text = ("%.2f").format(time * minPrice) + " zł"
                 println(priceText.text.toString())
                 //If the route is the other way around
-                if(opposite){
+                if (opposite) {
                     shortestRoute.reverse()
                     shortestStops.reverse()
                     val temporal = posIni
@@ -209,9 +211,11 @@ class PayFragment : Fragment() {
                 println(shortestRoute)
                 shortestRoute.forEachIndexed { i, vehicle ->
                     if (i == 0)
-                        routeText.text = "${vehicle}: ${shortestStops[i]} --> ${shortestStops[i+1]} \n"
+                        routeText.text =
+                            "${vehicle}: ${shortestStops[i]} --> ${shortestStops[i + 1]} \n"
                     else
-                        routeText.text = routeText.text.toString() + "${vehicle}: ${shortestStops[i]} --> ${shortestStops[i+1]} \n"
+                        routeText.text =
+                            routeText.text.toString() + "${vehicle}: ${shortestStops[i]} --> ${shortestStops[i + 1]} \n"
                 }
 
             } else {
@@ -244,19 +248,6 @@ class PayFragment : Fragment() {
                 if (!routeText.text.isEmpty() && !timeText.text.isEmpty() && !priceText.text.isEmpty() && ((time * minPrice) <= currentMoney)) {
                     val date = LocalDate.now()
                     var dateString = ""
-                    if(date.monthValue < 10){
-                        if( date.dayOfMonth < 10){
-                            dateString =
-                                date.year.toString() + 0 + date.monthValue.toString() + 0 + date.dayOfMonth.toString()
-                        } else {
-                            dateString =
-                                date.year.toString() + 0 + date.monthValue.toString() + date.dayOfMonth.toString()
-                        }
-                    } else {
-                        dateString =
-                            date.year.toString() + date.monthValue.toString() + date.dayOfMonth.toString()
-                    }
-                    val dateLong = dateString.toLong()
                     val timeIni = LocalTime.now()
                     val stationIni = stations[posIni]
                     val stationEnd = stations[posEnd]
@@ -264,15 +255,36 @@ class PayFragment : Fragment() {
                     var hour = ((timeIni.minute + time) / 60)
                     var min = (timeIni.minute + time) % 60
                     val timeEnd =
-                        (timeIni.hour + hour).toString() + ":" + min.toString() + ":" + timeIni.second.toString()
-                    val timeStart = (timeIni.hour).toString() + ":" + (timeIni.minute).toString() + ":" + (timeIni.second).toString()
+                        (if (timeIni.hour + hour < 10) "0${timeIni.hour + hour}" else (timeIni.hour + hour).toString()) +
+                                ":" + (if (min < 10) "0${min}" else min.toString()) +
+                                ":" + (if (timeIni.second < 10) "0${timeIni.second}" else timeIni.second.toString())
+                    val timeStart =
+                        (if (timeIni.hour < 10) "0${timeIni.hour}" else timeIni.hour.toString()) +
+                                ":" + (if (timeIni.minute < 10) "0${timeIni.minute}" else timeIni.minute.toString()) +
+                                ":" + (if (timeIni.second < 10) "0${timeIni.second}" else timeIni.second.toString())
+
+                    if (date.monthValue < 10) {
+                        if (date.dayOfMonth < 10) {
+                            dateString =
+                                date.year.toString() + 0 + date.monthValue.toString() + 0 + date.dayOfMonth.toString() + timeStart.replace(":", "")
+
+                        } else {
+                            dateString =
+                                date.year.toString() + 0 + date.monthValue.toString() + date.dayOfMonth.toString() + timeStart.replace(":", "")
+                        }
+                    } else {
+                        dateString =
+                            date.year.toString() + date.monthValue.toString() + date.dayOfMonth.toString() + timeStart.replace(":", "")
+                    }
+
+                    val dateLong = dateString.toLong()
+
 
                     //Create the document to add
                     val journey: MutableMap<String, Any> = mutableMapOf()
                     journey["date"] = dateLong
                     journey["initialStation"] = stationIni
                     journey["finalStation"] = stationEnd
-                    journey["id"] = ""
                     journey["money"] = money
                     journey["time"] = time
                     journey["timeStart"] = timeStart
@@ -283,38 +295,49 @@ class PayFragment : Fragment() {
 
                     //add the document
                     //Save user data in firebase
-                    val journeyBD = Journey(email, dateLong, shortestStops, shortestRoute, stationIni, stationEnd, money, time, timeStart, timeEnd)
+                    val UniqueID = rootRef.collection("journeys").document().id
+                    val journeyBD = Journey(UniqueID,
+                        email,
+                        dateLong,
+                        shortestStops,
+                        shortestRoute,
+                        stationIni,
+                        stationEnd,
+                        money.toLong(),
+                        time.toLong(),
+                        timeStart,
+                        timeEnd)
                     val journeydb = FirebaseFirestore.getInstance()
                     val journeyRef = journeydb.collection("journeys")
-                    val UniqueID = rootRef.collection("journeys").document().id
-                    journeyRef.document(dateLong.toString() + timeStart + UniqueID).set(journeyBD)
-                        Toast.makeText(
-                            activity,
-                            "Ticket paid successfully, with:\n Start station: " + stations[posIni]
-                                    + "\n End station: " + stations[posEnd], Toast.LENGTH_SHORT
-                        ).show()
-                        //Changes money value
-                        val email = FirebaseAuth.getInstance().currentUser?.email
-                        val usersRef = db.collection("users")
-                        usersRef.whereEqualTo("email", email)
-                            .get()
-                            .addOnSuccessListener { documents ->
-                                for (document in documents) {
-                                    if (document.exists()) {
-                                        db.collection("users")
-                                            .document(document.id)
-                                            .update(
-                                                mapOf(
-                                                    "money" to (document.getDouble("money")
-                                                    !!.minus(money))
-                                                )
+
+                    journeyRef.document(UniqueID).set(journeyBD)
+                    Toast.makeText(
+                        activity,
+                        "Ticket paid successfully, with:\n Start station: " + stations[posIni]
+                                + "\n End station: " + stations[posEnd], Toast.LENGTH_SHORT
+                    ).show()
+                    //Changes money value
+                    val email = FirebaseAuth.getInstance().currentUser?.email
+                    val usersRef = db.collection("users")
+                    usersRef.whereEqualTo("email", email)
+                        .get()
+                        .addOnSuccessListener { documents ->
+                            for (document in documents) {
+                                if (document.exists()) {
+                                    db.collection("users")
+                                        .document(document.id)
+                                        .update(
+                                            mapOf(
+                                                "money" to (document.getDouble("money")
+                                                !!.minus(money))
                                             )
-                                        (activity as MainActivity).updateUserMoney()
-                                    } else {
-                                        Log.d(ContentValues.TAG, "The document doesn't exist.")
-                                    }
+                                        )
+                                    (activity as MainActivity).updateUserMoney()
+                                } else {
+                                    Log.d(ContentValues.TAG, "The document doesn't exist.")
                                 }
                             }
+                        }
 
                         .addOnFailureListener {
                             Toast.makeText(
@@ -338,14 +361,14 @@ class PayFragment : Fragment() {
     /*
      *   Calculate the Int value of time from String values
      */
-    private fun stringToInt(s: String): Int{
-        if(s == "0") {
+    private fun stringToInt(s: String): Int {
+        if (s == "0") {
             return 0
-        } else if(s == "1"){
+        } else if (s == "1") {
             return 1
-        } else if(s == "2"){
+        } else if (s == "2") {
             return 2
-        } else{
+        } else {
             return 3
         }
     }

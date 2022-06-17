@@ -39,11 +39,10 @@ class JourneyListFragment : Fragment() {
         myAdapter.setOnClickListener(object : JourneyAdapter.onItemClickListener{
             override fun onItemClick(position: Int) {
                 findNavController().navigate(R.id.action_journeyListFragment_to_journeyFragment, Bundle().apply {
-                    val currentDate = journeyArrayList[position].date.toString().toCharArray()
-                    putString("date" ,"{}")
+                    putString("id" ,journeyArrayList[position].id)
+                    putLong("date" ,journeyArrayList[position].date!!)
                     putString("timeStart" ,journeyArrayList[position].timeStart)
                     putString("timeEnd" ,journeyArrayList[position].timeEnd)
-                    putString("id" ,journeyArrayList[position].id)
                     putString("initialStation" ,journeyArrayList[position].initialStation)
                     putString("finalStation" ,journeyArrayList[position].finalStation)
                     putLong("time" ,journeyArrayList[position].time!!)
@@ -66,18 +65,14 @@ class JourneyListFragment : Fragment() {
         val auth = FirebaseAuth.getInstance()
         val email = auth.currentUser?.email
 
-        journeyArrayList.clear()
-
-        db.collection("journeys").whereEqualTo("userEmail", email).get()
+        db.collection("journeys").orderBy("date", Query.Direction.DESCENDING).get()
             .addOnSuccessListener { documents ->
                 for (document in documents) {
-                    println(document.toObject(Journey::class.java).toString())
-                    journeyArrayList.add(document.toObject(Journey::class.java))
+                    if(document.get("userEmail")!! == email){
+                        journeyArrayList.add(document.toObject(Journey::class.java))
+                    }
                 }
                 myAdapter.notifyDataSetChanged()
-            }
-            .addOnFailureListener { exception ->
-                Log.w(TAG, "Error getting documents: ", exception)
             }
     }
 }

@@ -33,8 +33,8 @@ class JourneyAdapter (private val journeyList : ArrayList<Journey>) : RecyclerVi
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: JourneyAdapter.JourneyHolder, position: Int) {
         val journey: Journey = journeyList[position]
-        println(journey)
-        holder.date.text = "${journey.date}                 ${journey.timeStart.toString()} - ${journey.timeEnd.toString()}"
+        val currentDate = journey.date.toString().toCharArray()
+        holder.date.text = "${currentDate[0]}${currentDate[1]}${currentDate[2]}${currentDate[3]}-${currentDate[4]}${currentDate[5]}-${currentDate[6]}${currentDate[7]}                 ${journey.timeStart.toString()} - ${journey.timeEnd.toString()}"
         holder.initialStation.text = "From: ${journey.initialStation}"
         holder.finalStation.text = "To: ${journey.finalStation}"
     }
